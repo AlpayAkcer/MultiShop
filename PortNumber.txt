@@ -1,0 +1,13 @@
+
+Identity Server Port
+http://localhost:5001
+
+Catalog Port 
+https://localhost:7050
+
+Discount Port
+https://localhost:7051
+
+Order Port
+https://localhost:7052
+

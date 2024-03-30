@@ -12,9 +12,9 @@
     "Multishop.Order.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false, //Api çalışacak ama browser açılmayacak
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7061;http://localhost:5151",
+      "applicationUrl": "https://localhost:7052",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

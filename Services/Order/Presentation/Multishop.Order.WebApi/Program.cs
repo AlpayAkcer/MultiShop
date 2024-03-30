@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using Multishop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using Multishop.Order.Application.Features.CQRS.Queries.AddressQueries;
@@ -7,6 +8,14 @@ using Multishop.Order.Persistence.Context;
 using Multishop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Projeye JwtBearer yükledikten sonra bu ayarý yapmak gerekiyor. Catalog tokenini oluþturmak ve kontrol etmek için.
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "ResourceOrder";
+    opt.RequireHttpsMetadata = false;
+});
 
 builder.Services.AddDbContext<OrderContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -40,7 +49,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
