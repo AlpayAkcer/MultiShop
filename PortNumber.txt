@@ -11,3 +11,8 @@ https://localhost:7051
 Order Port
 https://localhost:7052
 
+Cargo Port
+https://localhost:7053
+
+Basket Port
+https://localhost:7054
