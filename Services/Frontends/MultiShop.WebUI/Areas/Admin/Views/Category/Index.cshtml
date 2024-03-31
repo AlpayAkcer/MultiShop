@@ -1,0 +1,59 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Kategori Listesi</h4>
+                <div id="example_filter" class="dataTables_filter pull-right">
+                    <p>Kategori ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.</p>
+                </div>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Kategori Adı</th>
+                            <th class="sortable">Ürünler</th>
+                            <th class="sortable">Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.Name</td>
+                            <td class="text-truncate">
+                                <a href="" class="btn btn-sm btn-warning">
+                                    Kategoriye Ait Ürünler
+                                </a>
+                            </td>
+                            <td class="text-truncate"><span class="lable-tag tag-success">Aktif</span></td>
+                            <td class="text-truncate">
+                                <a href="" class="btn btn-sm btn-danger"><i class="fa fa-eraser"></i></a>
+                                <a href="" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <ul class="pagination m-bot-0">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
