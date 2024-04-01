@@ -1,0 +1,27 @@
+﻿@model CreateCategoryDto
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni Kategori Girişi</h4>
+                <form method="post" asp-controller="Category" asp-action="CreateCategory" asp-area="Admin">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <input class="form-control" autofocus asp-for="Name" placeholder="Kategori Adını Giriniz" type="text">
+                            </fieldset>
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,37 @@
+﻿@model CreateSliderDto
+@{
+    ViewData["Title"] = "CreateFeatureSlider";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni Ürün Girişi</h4>
+                <form method="post" asp-controller="Slider" asp-action="CreateSlider" asp-area="Admin">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <input class="form-control" autofocus asp-for="Title" placeholder="Başlık Giriniz" type="text">
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="Description" placeholder="Açıklama" type="text">
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="PictureUrl" type="text">
+                            </fieldset>
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+

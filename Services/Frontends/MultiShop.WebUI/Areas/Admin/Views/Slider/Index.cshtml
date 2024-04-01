@@ -1,4 +1,5 @@
-﻿@model List<ResultCategoryDto>
+﻿@model List<ResultSliderDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -14,8 +15,9 @@
                     <thead>
                         <tr>
                             <th class="sortable">#</th>
-                            <th class="sortable">Kategori Adı</th>
-                            <th class="sortable">Ürünler</th>
+                            <th class="sortable">Resim</th>
+                            <th class="sortable">Başlık</th>
+                            <th class="sortable">Açıklama</th>
                             <th class="sortable">Durum</th>
                             <th>İşlemler</th>
                         </tr>
@@ -25,23 +27,25 @@
                         count++;
                         <tr>
                             <td class="text-truncate">@count</td>
-                            <td class="text-truncate">@item.Name</td>
                             <td class="text-truncate">
-                                <a href="" class="btn btn-sm btn-warning">
-                                    Kategoriye Ait Ürünler
-                                </a>
+                                <img src="@item.PictureUrl" />
                             </td>
-                            <td class="text-truncate"><span class="lable-tag tag-success">Aktif</span></td>
+                            <td class="text-truncate">@item.Title</td>
+                            <td class="text-truncate">@item.Description</td>
+
+                            <td class="text-truncate">
+                                <span class="lable-tag tag-success">Aktif</span>
+                            </td>
                             <td class="text-truncate">
 
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteCategory-@item.CategoryId">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteSlider-@item.SliderId">
                                     <i class="fa fa-eraser"></i>
                                 </button>
 
-                                <a asp-route-id="@item.CategoryId" asp-controller="Category" asp-action="UpdateCategory" asp-area="Admin" data-id="@item.CategoryId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                <a asp-route-id="@item.SliderId" asp-controller="Slider" asp-action="UpdateSlider" asp-area="Admin" data-id="@item.SliderId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                             </td>
                         </tr>
-                        <div class="modal" tabindex="-1" role="dialog" id="modalDeleteCategory-@item.CategoryId">
+                        <div class="modal" tabindex="-1" role="dialog" id="modalDeleteSlider-@item.SliderId">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -51,10 +55,10 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>@item.Name</p>
+                                        <p>@item.Title</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a class="btn btn-danger" asp-route-id="@item.CategoryId" asp-controller="Category" asp-action="DeleteCategory" asp-area="Admin" data-id="@item.CategoryId">Sil</a>
+                                        <a class="btn btn-danger" asp-route-id="@item.SliderId" asp-controller="Slider" asp-action="DeleteSlider" asp-area="Admin" data-id="@item.SliderId">Sil</a>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
                                     </div>
                                 </div>
@@ -64,8 +68,12 @@
                     }
 
                 </table>
-                <a class="btn btn-sm btn-primary" asp-controller="Category" asp-action="CreateCategory" asp-area="Admin">Yeni Kategori Ekle</a>
+                <a class="btn btn-sm btn-primary" asp-controller="Slider" asp-action="CreateSlider" asp-area="Admin">Yeni Ürün Ekle</a>
             </div>
         </div>
     </div>
 </section>
+
+
+
+

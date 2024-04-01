@@ -1,11 +1,22 @@
+using NToastNotify;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddHttpClient();
+
+builder.Services.AddControllersWithViews()
+    .AddNToastNotifyToastr(new ToastrOptions()
+    {
+        ProgressBar = true,
+        PositionClass = ToastPositions.TopRight,
+        TimeOut = 5000
+    })
+    .AddRazorRuntimeCompilation();
+
 var app = builder.Build();
 
-
+app.UseNToastNotify();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -27,7 +38,6 @@ app.UseEndpoints(endpoints =>
     );
 });
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+     name: "default",
+     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.Run();
