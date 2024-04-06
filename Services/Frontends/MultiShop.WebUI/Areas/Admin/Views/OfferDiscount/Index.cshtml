@@ -1,0 +1,77 @@
+﻿@model List<ResultOfferDiscountDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Başlık</th>
+                            <th class="sortable">Alt Başlık</th>
+                            <th class="sortable">Resim</th>
+                            <th class="sortable">Durum</th>
+                            <th class="sortable">Buton</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.Title</td>
+                            <td class="text-truncate">@item.SubTitle</td>
+                            <td class="text-truncate">
+                                <img src="@item.PictureUrl" width="80px;" />
+                            </td>
+                            <td class="text-truncate">@item.Status</td>
+                            <td class="text-truncate">@item.ButtonTitle</td>
+                            <td class="text-truncate">
+
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteOfferDiscount-@item.OfferDiscountId">
+                                    <i class="fa fa-eraser"></i>
+                                </button>
+
+                                <a asp-route-id="@item.OfferDiscountId" asp-controller="OfferDiscount" asp-action="UpdateOfferDiscount" asp-area="Admin" data-id="@item.OfferDiscountId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <div class="modal" tabindex="-1" role="dialog" id="modalDeleteOfferDiscount-@item.OfferDiscountId">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"><b>DİKKAT !!</b> Fırsat Silinecek</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>@item.Title</p>
+                                        <p>@item.SubTitle</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" asp-route-id="@item.OfferDiscountId" asp-controller="OfferDiscount" asp-action="DeleteOfferDiscount" asp-area="Admin" data-id="@item.OfferDiscountId">Sil</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </table>
+                <a class="btn btn-sm btn-primary" asp-controller="OfferDiscount" asp-action="CreateOfferDiscount" asp-area="Admin">Yeni Indirim Ekle</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

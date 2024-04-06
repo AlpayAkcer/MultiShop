@@ -27,7 +27,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
@@ -39,5 +39,5 @@ app.UseEndpoints(endpoints =>
 });
 app.MapControllerRoute(
      name: "default",
-     pattern: "{controller=Home}/{action=Index}/{id?}");
+     pattern: "{controller=Default}/{action=Index}/{id?}");
 app.Run();

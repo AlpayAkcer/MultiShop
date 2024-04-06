@@ -1,0 +1,38 @@
+﻿@model UpdateDeliveryInfoDto
+
+
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Delivery Güncelle</h4>
+                <form method="post" asp-controller="DeliveryInfo" asp-action="UpdateDeliveryInfo" asp-area="Admin">
+                    <input type="hidden" asp-for="DeliveryInfoId" />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <input class="form-control" autofocus asp-for="Title" type="text">
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <textarea class="form-control" asp-for="Description" type="text" cols="5"></textarea>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="Icon" type="text">
+                            </fieldset>
+                            <button class="btn btn-warning" type="submit">Güncelle</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+

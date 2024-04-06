@@ -1,0 +1,74 @@
+﻿@model List<ResultBrandDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Marka Adı</th>
+                            <th class="sortable">Ürünler</th>
+                            <th class="sortable">Resim</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.BrandName</td>
+                            <td class="text-truncate">
+                                <a href="" class="btn btn-sm btn-warning">
+                                    Marka'ya' Ait Ürünler
+                                </a>
+                            </td>
+                            <td class="text-truncate">
+                                <img src="@item.ImageUrl" width="80px" />
+                            </td>
+                            <td class="text-truncate">
+
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteBrand-@item.BrandId">
+                                    <i class="fa fa-eraser"></i>
+                                </button>
+
+                                <a asp-route-id="@item.BrandId" asp-controller="Brand" asp-action="UpdateBrand" asp-area="Admin" data-id="@item.BrandId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <div class="modal" tabindex="-1" role="dialog" id="modalDeleteBrand-@item.BrandId">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"><b>DİKKAT !!</b> Marka Silinecek</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>@item.BrandName</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" asp-route-id="@item.BrandId" asp-controller="Brand" asp-action="DeleteBrand" asp-area="Admin" data-id="@item.BrandId">Sil</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </table>
+                <a class="btn btn-sm btn-primary" asp-controller="Brand" asp-action="CreateBrand" asp-area="Admin">Yeni Marka Ekle</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+

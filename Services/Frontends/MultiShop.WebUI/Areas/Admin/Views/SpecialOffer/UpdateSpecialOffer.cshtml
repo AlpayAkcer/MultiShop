@@ -1,0 +1,35 @@
+﻿@model UpdateSpecialOfferDto
+@{
+    ViewData["Title"] = "UpdateSpecialOffer";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni Fırsat/Indirim Girişi</h4>
+                <form method="post" asp-controller="SpecialOffer" asp-action="UpdateSpecialOffer" asp-area="Admin">
+                    <input type="hidden" asp-for="SpecialOfferId" />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <input class="form-control" autofocus asp-for="Title" type="text">
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="SubTitle" type="text">
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="PictureUrl" type="text">
+                            </fieldset>
+                            <button class="btn btn-warning" type="submit">Güncelle</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+

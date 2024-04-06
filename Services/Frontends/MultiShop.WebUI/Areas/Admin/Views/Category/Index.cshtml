@@ -5,7 +5,6 @@
     int count = 0;
 }
 
-
 <section class="content container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -14,6 +13,7 @@
                     <thead>
                         <tr>
                             <th class="sortable">#</th>
+                            <th class="sortable">Resim</th>
                             <th class="sortable">Kategori Adı</th>
                             <th class="sortable">Ürünler</th>
                             <th class="sortable">Durum</th>
@@ -25,13 +25,18 @@
                         count++;
                         <tr>
                             <td class="text-truncate">@count</td>
+                            <td class="text-truncate">
+                                <img src="@item.PictureUrl" width="80px" />
+                            </td>
                             <td class="text-truncate">@item.Name</td>
                             <td class="text-truncate">
                                 <a href="" class="btn btn-sm btn-warning">
                                     Kategoriye Ait Ürünler
                                 </a>
                             </td>
-                            <td class="text-truncate"><span class="lable-tag tag-success">Aktif</span></td>
+                            <td class="text-truncate">
+                                <span class="lable-tag tag-success">Aktif</span>
+                            </td>
                             <td class="text-truncate">
 
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteCategory-@item.CategoryId">

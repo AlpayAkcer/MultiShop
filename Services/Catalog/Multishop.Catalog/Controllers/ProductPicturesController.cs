@@ -50,5 +50,12 @@ namespace Multishop.Catalog.Controllers
             await _productPictureService.UpdateProductPictureAsync(updateProductPictureDto);
             return Ok("Kayıt Başarıyla Güncellendi");
         }
+
+        [HttpGet("GetPictureByProductID")]
+        public async Task<IActionResult> GetPictureByProductID(string id)
+        {
+            var values = await _productPictureService.GetPictureByProductIDAsync(id);
+            return Ok(values);
+        }        
     }
 }

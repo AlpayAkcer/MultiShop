@@ -1,0 +1,39 @@
+﻿@model CreateProductPictureDto
+@{
+    ViewData["Title"] = "CreateProductPicture";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni Ürün Resim Girişi</h4>
+                <form method="post" asp-controller="ProductPicture" asp-action="CreateProductPicture" asp-area="Admin" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <select class="form-control" asp-for="ProductId">
+                                    <option value="0">Ürün Seçiniz</option>
+                                    @foreach (var item in ViewBag.ProductList)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" id="MultiFile" name="MultiFile" type="file" multiple>
+                            </fieldset>
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+

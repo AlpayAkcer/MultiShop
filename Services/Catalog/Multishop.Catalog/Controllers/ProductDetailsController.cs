@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Multishop.Catalog.Dtos.ProductDetailDto;
 using Multishop.Catalog.Services.ProductDetailServices;
+using Multishop.Catalog.Services.ProductServices;
 
 namespace Multishop.Catalog.Controllers
 {
@@ -10,7 +11,6 @@ namespace Multishop.Catalog.Controllers
     public class ProductDetailsController : ControllerBase
     {
         private readonly IProductDetailService _productDetailService;
-
         public ProductDetailsController(IProductDetailService productDetailService)
         {
             _productDetailService = productDetailService;
@@ -27,6 +27,20 @@ namespace Multishop.Catalog.Controllers
         public async Task<IActionResult> GetProductDetailByID(string id)
         {
             var values = await _productDetailService.GetByIdProductDetailAsync(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetProductDetailByProductId/{id}")]
+        public async Task<IActionResult> GetProductDetailByProductId(string id)
+        {
+            var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetProductWithProductDetails")]
+        public async Task<IActionResult> GetProductWithProductDetails()
+        {
+            var values = await _productDetailService.GetProductWithProductDetailAsync();
             return Ok(values);
         }
 

@@ -5,8 +5,14 @@ using Multishop.Catalog.Services.SliderServices;
 using Multishop.Catalog.Services.ProductDetailServices;
 using Multishop.Catalog.Services.ProductPictureServices;
 using Multishop.Catalog.Services.ProductServices;
+using Multishop.Catalog.Services.SpecialOfferServices;
+using Multishop.Catalog.Services.DeliveryInfoServices;
+using Multishop.Catalog.Services.OfferDiscountServices;
+using Multishop.Catalog.Services.BrandServices;
 using Multishop.Catalog.Settings;
 using System.Reflection;
+using Multishop.Catalog.Services.ContactServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +21,11 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductPictureService, ProductPictureService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
+builder.Services.AddScoped<IDeliveryInfoService, DeliveryInfoService>();
+builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

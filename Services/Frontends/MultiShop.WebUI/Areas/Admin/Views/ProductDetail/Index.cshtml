@@ -1,0 +1,69 @@
+﻿@model List<ResultProductWithProductDetailDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Ürün Adı</th>
+                            <th class="sortable">Ürünler</th>
+                            <th class="sortable">Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.ProductName</td>
+                            <td class="text-truncate">@item.Info</td>
+                            <td class="text-truncate">@item.Description</td>
+                            <td class="text-truncate">
+
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteProductDetail-@item.ProductDetailId">
+                                    <i class="fa fa-eraser"></i>
+                                </button>
+
+                                <a asp-route-id="@item.ProductDetailId" asp-controller="ProductDetail" asp-action="UpdateProductDetail" asp-area="Admin" data-id="@item.ProductDetailId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <div class="modal" tabindex="-1" role="dialog" id="modalDeleteProductDetail-@item.ProductDetailId">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"><b>DİKKAT !!</b> Kategori Silinecek</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>@item.Info</p>
+                                        <p>@item.Description</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" asp-route-id="@item.ProductDetailId" asp-controller="ProductDetail" asp-action="DeleteProductDetail" asp-area="Admin" data-id="@item.ProductDetailId">Sil</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </table>
+                <a class="btn btn-sm btn-primary" asp-controller="ProductDetail" asp-action="CreateProductDetail" asp-area="Admin">Yeni Özellik(Açıklama) Ekle</a>
+            </div>
+        </div>
+    </div>
+</section>
+

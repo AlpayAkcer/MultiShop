@@ -26,6 +26,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            ViewBag.V0 = "SpecialOffer İşlemleri";
+            ViewBag.V1 = "Anasayfa";
+            ViewBag.V2 = "Slider";
+            ViewBag.V3 = "Slider Listesi";
+
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7050/api/Sliders");
             if (response.IsSuccessStatusCode)
@@ -41,6 +46,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateSlider")]
         public IActionResult CreateSlider()
         {
+            ViewBag.V0 = "Slider İşlemleri";
+            ViewBag.V1 = "Anasayfa";
+            ViewBag.V2 = "Slider";
+            ViewBag.V3 = "Slider Ekle";
+
             return View();
         }
 
@@ -79,6 +89,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateSlider/{id}")]
         public async Task<IActionResult> UpdateSlider(string id)
         {
+            ViewBag.V0 = "Slider İşlemleri";
+            ViewBag.V1 = "Anasayfa";
+            ViewBag.V2 = "Slider";
+            ViewBag.V3 = "Slider Güncelle";
+
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7050/api/Sliders/" + id);
             if (responseMessage.IsSuccessStatusCode)

@@ -38,7 +38,7 @@
             <div class="row pb-3">
                 @await Component.InvokeAsync("_ProductListShortingGetProductCountPartial")
 
-                @await Component.InvokeAsync("_ProductListPartial")
+                @await Component.InvokeAsync("_ProductListPartial", new { id = ViewBag.i })
 
                 @await Component.InvokeAsync("_ProductListPaginationPartial")
 

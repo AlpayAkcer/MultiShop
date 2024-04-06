@@ -8,12 +8,10 @@ namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
     public class _CarouselComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IToastNotification _toastNotification;
 
-        public _CarouselComponentPartial(IHttpClientFactory httpClientFactory, IToastNotification toastNotification)
+        public _CarouselComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-            _toastNotification = toastNotification;
         }
 
 

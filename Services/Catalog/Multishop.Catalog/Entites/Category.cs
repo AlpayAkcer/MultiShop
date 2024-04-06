@@ -9,6 +9,7 @@ namespace Multishop.Catalog.Entites
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId { get; set; }
         public string Name { get; set; }
+        public string PictureUrl { get; set; }
 
     }
 }

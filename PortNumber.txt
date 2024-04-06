@@ -16,3 +16,6 @@ https://localhost:7053
 
 Basket Port
 https://localhost:7054
+
+Comment (Yorumlar) Port
+https://localhost:7055

@@ -41,6 +41,7 @@
                                 </button>
 
                                 <a asp-route-id="@item.ProductId" asp-controller="Product" asp-action="UpdateProduct" asp-area="Admin" data-id="@item.ProductId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                <a asp-route-id="@item.ProductId" asp-controller="Product" asp-action="Product" asp-area="Admin" data-id="@item.ProductId" class="btn btn-sm btn-info"><i class="fa fa-picture-o"></i></a>
                             </td>
                         </tr>
                         <div class="modal" tabindex="-1" role="dialog" id="modalDeleteProduct-@item.ProductId">
@@ -62,7 +63,6 @@
                                 </div>
                             </div>
                         </div>
-
                     }
 
                 </table>
@@ -71,5 +71,3 @@
         </div>
     </div>
 </section>
-
-

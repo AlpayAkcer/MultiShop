@@ -1,0 +1,38 @@
+﻿@model UpdateProductPictureDto
+@{
+    ViewData["Title"] = "UpdateProductPicture";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni Ürün Resim Girişi</h4>
+                <form method="post" asp-controller="ProductPicture" asp-action="UpdateProductPicture" asp-area="Admin">
+                    <input type="hidden" asp-for="ProductId" />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <select class="form-control" asp-for="ProductId">
+                                    <option value="0">Ürün Seçiniz</option>
+                                    @foreach (var item in ViewBag.ProductList)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="PictureUrl" type="text>
+                            </fieldset>
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+

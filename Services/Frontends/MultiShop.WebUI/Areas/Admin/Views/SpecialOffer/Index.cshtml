@@ -1,0 +1,71 @@
+﻿@model List<ResultSpecialOfferDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Kategori Adı</th>
+                            <th class="sortable">Ürünler</th>
+                            <th class="sortable">Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.Title</td>
+                            <td class="text-truncate">@item.SubTitle</td>
+                            <td class="text-truncate">
+                                <img src="@item.PictureUrl" width="80px;" />
+                            </td>
+                            <td class="text-truncate">
+
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteSpecialOffer-@item.SpecialOfferId">
+                                    <i class="fa fa-eraser"></i>
+                                </button>
+
+                                <a asp-route-id="@item.SpecialOfferId" asp-controller="SpecialOffer" asp-action="UpdateSpecialOffer" asp-area="Admin" data-id="@item.SpecialOfferId" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <div class="modal" tabindex="-1" role="dialog" id="modalDeleteSpecialOffer-@item.SpecialOfferId">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"><b>DİKKAT !!</b> Fırsat Silinecek</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>@item.Title</p>
+                                        <p>@item.SubTitle</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" asp-route-id="@item.SpecialOfferId" asp-controller="SpecialOffer" asp-action="DeleteSpecialOffer" asp-area="Admin" data-id="@item.SpecialOfferId">Sil</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </table>
+                <a class="btn btn-sm btn-primary" asp-controller="SpecialOffer" asp-action="CreateSpecialOffer" asp-area="Admin">Yeni Fırsat & Indirim Ekle</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+

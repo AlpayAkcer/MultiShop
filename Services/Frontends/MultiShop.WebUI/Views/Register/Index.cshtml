@@ -1,0 +1,49 @@
+﻿@model CreateRegisterDto
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Yeni Üye Kayıt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/Register/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="inner">
+            <div class="image-holder">
+                <img src="/Register/images/registration-form-6.jpg" alt="">
+            </div>
+            <form action="">
+                <h3>MultiShop </h3>
+                <div class="form-row">
+                    <input type="text" asp-for="Name" id="first_name" class="form-control" placeholder="Adınız">
+                    <input type="text" asp-for="Surname" id="last_name" class="form-control" placeholder="Soyadınız">
+                </div>
+                <div class="form-row">
+                    <input type="text" asp-for="Email" style="width:100%;" class="form-control" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}" placeholder="Email Adresi">
+                </div>
+                <div class="form-row">
+                    <input type="text" asp-for="Username" style="width:100%;" class="form-control" required placeholder="Kullanıcı Adınız">
+                </div>
+                <div class="form-row">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Şifreniz">
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Şifre Tekrarı">
+                </div>
+                <button>
+                    Book Now
+                    <i class="zmdi zmdi-long-arrow-right"></i>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="/Register/js/jquery-3.3.1.min.js"></script>
+    <script src="/Register/js/main.js"></script>
+</body>
+</html>
