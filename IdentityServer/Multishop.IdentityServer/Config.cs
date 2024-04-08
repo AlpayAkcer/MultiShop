@@ -50,7 +50,7 @@ namespace Multishop.IdentityServer
                 ClientName="Multi Shop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "DiscountFullPermission" } 
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" } 
                 //=> Orjinali bu şekilde olacak. Hata alması için yukarıdaki ayarı kullanıyorum.
 
             },
@@ -61,7 +61,7 @@ namespace Multishop.IdentityServer
                 ClientName="Multi Shop Manager User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CargoFullPermission", "BasketFullPermission" }
             },
 
             //Admin yetkileri

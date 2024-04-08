@@ -1,6 +1,6 @@
-﻿namespace MultiShop.DtoLayer.IdentityDtos.LoginDtos
+﻿namespace Multishop.IdentityServer.Dtos
 {
-    public class SignInDto
+    public class UserLoginDto
     {
         public string Username { get; set; }
         public string Password { get; set; }

@@ -10,7 +10,7 @@
     @await Component.InvokeAsync("_TopBarLayoutComponentPartial")
     <!-- Topbar End -->
     <!-- Navbar Start -->
-    @await Component.InvokeAsync("_NavBarLayoutComponentPartial")    
+    @await Component.InvokeAsync("_NavBarLayoutComponentPartial")
     <!-- Navbar End -->
     @RenderBody()
 
@@ -21,7 +21,7 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     @await Component.InvokeAsync("_ScriptLayoutComponentPartial")
+    @await Component.InvokeAsync("NToastNotify")
 </body>
-
 </html>
 

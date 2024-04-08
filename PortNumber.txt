@@ -1,3 +1,5 @@
+Ocelot Gateway
+https://localhost:5000
 
 Identity Server Port
 http://localhost:5001

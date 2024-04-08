@@ -1,4 +1,4 @@
-﻿@model CreateRegisterDto
+﻿@model CreateLoginDto
 
 @{
     Layout = null;
@@ -19,26 +19,19 @@
                 <img src="/Register/images/registration-form-6.jpg" alt="">
             </div>
             <form method="post">
-                <h3>Yeni Üye </h3>
+                <h3>MultiShop </h3>
                 <div class="form-row">
-                    <input type="text" asp-for="FirstName" id="FirstName" class="form-control" placeholder="Adınız">
-                    <input type="text" asp-for="Surname" id="Surname" class="form-control" placeholder="Soyadınız">
+                    <input type="text" asp-for="Username" style="width:100%;" class="form-control" required placeholder="Kullanıcı Adınızı Giriniz">
                 </div>
                 <div class="form-row">
-                    <input type="text" asp-for="Email" style="width:100%;" class="form-control" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}" placeholder="Email Adresi">
-                </div>
-                <div class="form-row">
-                    <input type="text" asp-for="Username" style="width:100%;" class="form-control" required placeholder="Kullanıcı Adınız">
-                </div>
-                <div class="form-row">
-                    <input type="password" asp-for="Password" class="form-control" placeholder="Şifreniz">
-                    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Şifre Tekrarı">
+                    <input type="password" asp-for="Password" style="width:100%;" class="form-control" placeholder="Şifreniz">
                 </div>
                 <button>
-                    Kayıt
+                    Giriş Yap
                     <i class="zmdi zmdi-long-arrow-right"></i>
                 </button>
             </form>
+
         </div>
     </div>
 

@@ -7,9 +7,9 @@ using Multishop.Catalog.Services.DeliveryInfoServices;
 
 namespace Multishop.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
     public class DeliveryInfosController : ControllerBase
     {
         private readonly IDeliveryInfoService _deliveryInfoService;

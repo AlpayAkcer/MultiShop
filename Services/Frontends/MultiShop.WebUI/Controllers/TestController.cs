@@ -3,21 +3,22 @@ using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
+using System.Text.Json.Nodes;
 
-namespace MultiShop.WebUI.ViewComponents.UILayoutViewComponents
+namespace MultiShop.WebUI.Controllers
 {
-    public class _NavBarLayoutComponentPartial : ViewComponent
+    public class TestController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _NavBarLayoutComponentPartial(IHttpClientFactory httpClientFactory)
+        public TestController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
 
         [HttpGet]
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IActionResult> Index()
         {
             string token = "";
             using (var httpClient = new HttpClient())
@@ -56,5 +57,6 @@ namespace MultiShop.WebUI.ViewComponents.UILayoutViewComponents
             }
             return View();
         }
+
     }
 }
