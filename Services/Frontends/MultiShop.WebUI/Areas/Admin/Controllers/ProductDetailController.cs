@@ -1,61 +1,42 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Multishop.Catalog.Dtos.ProductDto;
 using MultiShop.DtoLayer.CatalogDtos.ProductDetailDto;
 using MultiShop.WebUI.ResultMessage;
-using Newtonsoft.Json;
+using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using NToastNotify;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/ProductDetail")]
     public class ProductDetailController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IProductDetailService _productDetailService;
+        private readonly IProductService _productService;
         private readonly IToastNotification _toastNotification;
 
-        public ProductDetailController(IHttpClientFactory httpClientFactory, IToastNotification toastNotification)
+        public ProductDetailController(IProductDetailService productDetailService, IProductService productService, IToastNotification toastNotification)
         {
-            _httpClientFactory = httpClientFactory;
+            _productDetailService = productDetailService;
+            _productService = productService;
             _toastNotification = toastNotification;
         }
-
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            ViewBag.V0 = "Ürün Detay İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Ürün Detay";
-            ViewBag.V3 = "Ürün Detay Listesi";
-
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7050/api/ProductDetails/GetProductWithProductDetails");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                List<ResultProductWithProductDetailDto> value = JsonConvert.DeserializeObject<List<ResultProductWithProductDetailDto>>(jsonData);
-                return View(value);
-
-            }
-            return View();
+            ProductDetailViewBagList();
+            var values = await _productDetailService.GetAllProductDetailAsync();
+            return View(values);
         }
 
         [HttpGet]
         [Route("CreateProductDetail")]
         public IActionResult CreateProductDetail()
         {
-            ViewBag.V0 = "Ürün Detay İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Ürün Detay";
-            ViewBag.V3 = "Ürün Detay Ekle";
-
-            ProductList();
-
+            ProductList();  //Ürün Listesi
+            ProductDetailViewBagList();
             return View();
         }
 
@@ -63,79 +44,44 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateProductDetail")]
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
         {
-
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createProductDetailDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7050/api/ProductDetails", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createProductDetailDto.ProductId), new ToastrOptions { Title = "Başarılı" });
-                return RedirectToAction("Index", "ProductDetail", new { Area = "Admin" });
-            }
-            return View();
+            await _productDetailService.CreateProductDetailAsync(createProductDetailDto);
+            _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createProductDetailDto.ProductId), new ToastrOptions { Title = "Başarılı" });
+            return RedirectToAction("Index", "ProductDetail", new { Area = "Admin" });
         }
 
         [HttpDelete("{id}")]
         [Route("DeleteProductDetail/{id}")]
         public async Task<IActionResult> DeleteProductDetail(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7050/api/ProductDetails?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                _toastNotification.AddErrorToastMessage(NotifyMessage.ResultTitle.Delete(id.ToString()), new ToastrOptions { Title = "Başarıyla Silindi" });
-                return RedirectToAction("Index", "ProductDetail", new { Area = "Admin" });
-            }
-            return View();
+            await _productDetailService.DeleteProductDetailAsync(id);
+            _toastNotification.AddErrorToastMessage(NotifyMessage.ResultTitle.Delete(id.ToString()), new ToastrOptions { Title = "Başarıyla Silindi" });
+            return RedirectToAction("Index", "ProductDetail", new { Area = "Admin" });
         }
 
         [HttpGet]
         [Route("UpdateProductDetail/{id}")]
         public async Task<IActionResult> UpdateProductDetail(string id)
         {
-            ViewBag.V0 = "Marka İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Markalar";
-            ViewBag.V3 = "Marka Güncelle";
-
+            ProductDetailViewBagList();
             ProductList();
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7050/api/ProductDetails/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<UpdateProductDetailDto>(jsonData);
-                return View(value);
-            }
-            return View();
+            var values = await _productDetailService.GetByIdProductDetailAsync(id);
+            return View(values);
         }
 
         [HttpPost]
         [Route("UpdateProductDetail/{id}")]
         public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateProductDetailDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7050/api/ProductDetails", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateProductDetailDto.ProductDetailId), new ToastrOptions { Title = "Başarıyla Güncellendi" });
-                return RedirectToAction("Index", "ProductDetail", new { Area = "Admin" });
-            }
-            return View();
+            await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
+            _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateProductDetailDto.ProductDetailId), new ToastrOptions { Title = "Başarıyla Güncellendi" });
+            return RedirectToAction("Index", "ProductDetail", new { Area = "Admin" });
         }
 
         public async void ProductList()
         {
             #region ProductList
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7050/api/Products");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var value = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-            List<SelectListItem> productValue = (from x in value
+            var values = await _productService.GetAllProductAsync();
+            List<SelectListItem> productValue = (from x in values
                                                  select new SelectListItem
                                                  {
                                                      Text = x.Name,
@@ -143,6 +89,13 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                                                  }).ToList();
             ViewBag.ProductList = productValue;
             #endregion
+        }
+
+        void ProductDetailViewBagList()
+        {
+            ViewBag.V0 = "Ürün Detay İşlemleri";
+            ViewBag.V1 = "Anasayfa";
+            ViewBag.V2 = "Ürün Detay";
         }
     }
 }

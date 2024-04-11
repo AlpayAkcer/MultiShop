@@ -18,35 +18,35 @@ namespace Multishop.Catalog.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SliderList()
+        public async Task<IActionResult> SpecialOfferList()
         {
             var values = await _specialOfferService.GetAllSpecialOfferAsync();
             return Ok(values);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSliderById(string id)
+        public async Task<IActionResult> GetSpecialOfferById(string id)
         {
             var values = await _specialOfferService.GetByIdSpecialOfferAsync(id);
             return Ok(values);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSlider(CreateSpecialOfferDto createSpecialOfferDto)
+        public async Task<IActionResult> CreateSpecialOffer(CreateSpecialOfferDto createSpecialOfferDto)
         {
             await _specialOfferService.CreateSpecialOfferAsync(createSpecialOfferDto);
             return Ok("Kayıt Başarılı");
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteFeatureSlider(string id)
+        public async Task<IActionResult> DeleteSpecialOffer(string id)
         {
             await _specialOfferService.DeleteSpecialOfferAsync(id);
             return Ok("Kayıt Başarılı Bir Şekilde Silindi");
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateFeatureSlider(UpdateSpecialOfferDto updateSpecialOfferDto)
+        public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
             await _specialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);
             return Ok("Kayıt Başarıyla Güncellendi");

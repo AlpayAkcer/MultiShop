@@ -1,4 +1,4 @@
-﻿@model List<ResultProductWithProductDetailDto>
+﻿@model List<ResultProductDetailDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
                         count++;
                         <tr>
                             <td class="text-truncate">@count</td>
-                            <td class="text-truncate">@item.ProductName</td>
+                            <td class="text-truncate">@item.ProductId</td>
                             <td class="text-truncate">@item.Info</td>
                             <td class="text-truncate">@item.Description</td>
                             <td class="text-truncate">
@@ -41,7 +41,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title"><b>DİKKAT !!</b> Kategori Silinecek</h5>
+                                        <h5 class="modal-title"><b>DİKKAT !!</b> Ürün Özelliği Silinecek</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
