@@ -14,7 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": false, //Api çalışacak ama browser açılmayacak
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7052",
+      "applicationUrl": "http://localhost:7072",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

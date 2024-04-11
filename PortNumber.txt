@@ -21,3 +21,9 @@ https://localhost:7054
 
 Comment (Yorumlar) Port
 https://localhost:7055
+
+Payment Port
+https://localhost:7056
+
+Images Port
+https://localhost:7057

@@ -2,9 +2,9 @@
 {
     public class ClientSettings
     {
-        public Client MultishopVisitorClient { get; set; }
-        public Client MultishopManagerClient { get; set; }
-        public Client MultishopAdminClient { get; set; }
+        public Client MultiShopVisitorClient { get; set; }
+        public Client MultiShopManagerClient { get; set; }
+        public Client MultiShopAdminClient { get; set; }
     }
 
     public class Client

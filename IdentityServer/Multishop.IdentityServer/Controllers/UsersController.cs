@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Multishop.IdentityServer.Models;
@@ -22,15 +21,15 @@ namespace Multishop.IdentityServer.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet("GetUser")]
-        public async Task<IActionResult> GetUser()
+        [HttpGet("GetUserInfo")]
+        public async Task<IActionResult> GetUserInfo()
         {
             var userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
             var user = await _userManager.FindByIdAsync(userClaim.Value);
             return Ok(new
             {
                 Id = user.Id,
-                Name = user.FirstName,
+                FirstName = user.FirstName,
                 Surname = user.Surname,
                 Email = user.Email,
                 UserName = user.UserName

@@ -17,43 +17,46 @@ namespace Multishop.IdentityServer
             new ApiResource("ResourceOrder"){Scopes ={"OrderFullPermission"}},
             new ApiResource("ResourceCargo"){Scopes ={"CargoFullPermission"}},
             new ApiResource("ResourceBasket"){Scopes ={"BasketFullPermission"}},
+            new ApiResource("ResourceComment"){Scopes ={"CommentFullPermission"}},
+            new ApiResource("ResourcePayment"){Scopes ={"PaymentFullPermission"}},
+            new ApiResource("ResourceImages"){Scopes ={"ImagesFullPermission"}},
+            new ApiResource("ResourceOcelot"){Scopes ={"OcelotFullPermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
-            //Token alldığımız kullanıcının hangi bilgilerine erişim sağlayacağımızı aldık.
-            new IdentityResources.OpenId(),
-            new IdentityResources.Email(),
-            new IdentityResources.Profile()
+          new IdentityResources.OpenId(),
+          new IdentityResources.Profile(),
+          new IdentityResources.Email()
         };
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
         {
             new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
-            new ApiScope("CatalogReadPermission","Reading authrity for catalog operations"),
-            new ApiScope("DiscountFullPermission","Reading authrity for discount operations"),
-            new ApiScope("OrderFullPermission","Reading authrity for order operations"),
-            new ApiScope("CargoFullPermission","Reading authrity for cargo operations"),
-            new ApiScope("BasketFullPermission","Reading authrity for basket operations"),
+            new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
+            new ApiScope("DiscountFullPermission","Full authority for discount operations"),
+            new ApiScope("OrderFullPermisson","Full authority for order operations"),
+            new ApiScope("CargoFullPermission","Full authority for cargo operations"),
+            new ApiScope("BasketFullPermission","Full authority for basket operations"),
+            new ApiScope("CommentFullPermission","Full authority for comment operations"),
+            new ApiScope("PaymentFullPermission","Full authority for payment operations"),
+            new ApiScope("ImageFullPermission","Full authority for image operations"),
+            new ApiScope("OcelotFullPermission","Full authority for ocelot operations"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         public static IEnumerable<Client> Clients => new Client[]
         {
             new Client
-            {
-                //Siteye giren kullanıcıların kayıt olmadan yapabilecekleri yetkiler ve izinleri
-                //Kullanıcı şu an bu ayarlar ile sadece catalog izinlerine sahip. Yani ürünleri görebilir.
-                //Sepete ürün ekleme işlemi yapmak istiyor ise o zaman OrderFullPermission eklenmeli veya
-                //İndirimlerden yararlanmak istiyor ise o zaman da discountfullpermission eklenmesi gerekiyor.
-                ClientId="MultishopVisitorId",
+                {
+                ClientId="MultiShopVisitorId",
                 ClientName="Multi Shop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
-                ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" } 
-                //=> Orjinali bu şekilde olacak. Hata alması için yukarıdaki ayarı kullanıyorum.
+                ClientSecrets={new Secret("multishopsecret".Sha256())},
+                AllowedScopes={"CatalogReadPermission","CatalogFullPermission","OcelotFullPermission","CommentFullPermission","ImageFullPermission", "CommentFullPermission",  IdentityServerConstants.LocalApi.ScopeName },
+                AllowAccessTokensViaBrowser=true
+                },
 
-            },
             //Manager yetkileri
             new Client
             {
@@ -61,7 +64,13 @@ namespace Multishop.IdentityServer
                 ClientName="Multi Shop Manager User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CargoFullPermission", "BasketFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImagesFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName,
+                IdentityServerConstants.StandardScopes.Email,
+                IdentityServerConstants.StandardScopes.Profile,
+                IdentityServerConstants.StandardScopes.OpenId,
+                },
+                AccessTokenLifetime=1000
             },
 
             //Admin yetkileri
@@ -71,7 +80,8 @@ namespace Multishop.IdentityServer
                 ClientName="Multi Shop Admin User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission","CargoFullPermission","BasketFullPermission",
+                AllowedScopes={ "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission","CargoFullPermission","BasketFullPermission","OcelotFullPermission",
+                    "CommentFullPermission","ImagesFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.Profile,
