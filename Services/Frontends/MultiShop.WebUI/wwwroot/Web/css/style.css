@@ -9352,7 +9352,9 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-decoration-none {
-  text-decoration: none !important;
+    text-wrap: wrap;
+    text-decoration: none !important;
+    padding: 7px;
 }
 
 .text-break {

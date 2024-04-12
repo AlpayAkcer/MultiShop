@@ -1,4 +1,4 @@
-﻿@model ResultProductWithCategoryDto
+﻿@model UpdateProductDto
 <div class="col-lg-7 h-auto mb-30">
     <div class="h-100 bg-light p-30">
         <h3>@Model.Name</h3>
@@ -13,7 +13,6 @@
             <small class="pt-1">(0 Yorum)</small>
         </div>
         <h3 class="font-weight-semi-bold mb-4">@Model.Price.ToString("C")</h3>
-        <p class="mb-2">@Model.CategoryName @Model.CategoryId</p>
         <p class="mb-4">
             @Model.Description
         </p>

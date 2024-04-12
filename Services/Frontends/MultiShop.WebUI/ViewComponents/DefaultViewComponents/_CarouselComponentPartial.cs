@@ -1,33 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.DtoLayer.CatalogDtos.SliderDtos;
-using Newtonsoft.Json;
-using NToastNotify;
+using MultiShop.WebUI.Services.CatalogServices.SliderServices;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _CarouselComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ISliderService _sliderService;
 
-        public _CarouselComponentPartial(IHttpClientFactory httpClientFactory)
+        public _CarouselComponentPartial(ISliderService sliderService)
         {
-            _httpClientFactory = httpClientFactory;
+            _sliderService = sliderService;
         }
-
-
-        [HttpGet]
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7050/api/Sliders");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<List<ResultSliderDto>>(jsonData);
-                return View(value);
-            }
-            return View();
+            var values = await _sliderService.GetAllSliderAsync();
+            return View(values);
         }
     }
 }

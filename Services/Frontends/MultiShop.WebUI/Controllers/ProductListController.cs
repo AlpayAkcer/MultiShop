@@ -20,6 +20,9 @@ namespace MultiShop.WebUI.Controllers
         [Route("ProductList/{id}")]
         public IActionResult Index(string id)
         {
+            ViewBag.Home = "Anasayfa";
+            ViewBag.Home1 = "Ürünler";
+            ViewBag.Home2 = "Ürün Listesi";
             ViewBag.i = id;
             return View();
         }
@@ -27,6 +30,9 @@ namespace MultiShop.WebUI.Controllers
         public IActionResult ProductDetail(string id)
         {
             ViewBag.pid = id;
+            ViewBag.Home = "Anasayfa";
+            ViewBag.Home1 = "Ürünler";
+            ViewBag.Home2 = "Ürün Detayı";
             return View();
         }
 

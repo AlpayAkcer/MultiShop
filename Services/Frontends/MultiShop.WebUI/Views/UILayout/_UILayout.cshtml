@@ -12,6 +12,9 @@
     <!-- Navbar Start -->
     @await Component.InvokeAsync("_NavBarLayoutComponentPartial")
     <!-- Navbar End -->
+    <!--breadcrumb Start-->
+    @await Component.InvokeAsync("_BreadcrumbUrlLayoutComponentPartial")
+    <!--breadcrumb End-->
     @RenderBody()
 
     <!-- Footer Start -->

@@ -18,10 +18,10 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductDetailServices
         {
             await _httpClient.DeleteAsync("productdetails?id=" + id);
         }
-        public async Task<UpdateProductDetailDto> GetByIdProductDetailAsync(string id)
+        public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
         {
             var responseMessage = await _httpClient.GetAsync("productdetails/" + id);
-            var values = await responseMessage.Content.ReadFromJsonAsync<UpdateProductDetailDto>();
+            var values = await responseMessage.Content.ReadFromJsonAsync<GetByIdProductDetailDto>();
             return values;
         }
         public async Task<List<ResultProductDetailDto>> GetAllProductDetailAsync()
@@ -36,10 +36,11 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductDetailServices
             await _httpClient.PutAsJsonAsync<UpdateProductDetailDto>("productdetails", updateProductDetailDto);
         }
 
-        public async Task<UpdateProductDetailDto> GetByProductIdProductDetailAsync(string id)
+        public async Task<List<GetByIdProductDetailDto>> GetByProductIdProductDetailAsync(string id)
         {
             var responseMessage = await _httpClient.GetAsync("productdetails/GetProductDetailByProductId/" + id);
-            var values = await responseMessage.Content.ReadFromJsonAsync<UpdateProductDetailDto>();
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<GetByIdProductDetailDto>>(jsonData);
             return values;
         }
     }

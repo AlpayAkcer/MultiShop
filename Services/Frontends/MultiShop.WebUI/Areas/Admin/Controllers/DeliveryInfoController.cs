@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.DeliveryInfoDtos;
 using MultiShop.WebUI.ResultMessage;
+using MultiShop.WebUI.Services.CatalogServices.DeliveryInfoServices;
 using Newtonsoft.Json;
 using NToastNotify;
 using System.Text;
@@ -13,42 +14,28 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Route("Admin/DeliveryInfo")]
     public class DeliveryInfoController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IDeliveryInfoService _deliveryInfoService;
         private readonly IToastNotification _toastNotification;
 
-        public DeliveryInfoController(IHttpClientFactory httpClientFactory, IToastNotification toastNotification)
+        public DeliveryInfoController(IDeliveryInfoService deliveryInfoService, IToastNotification toastNotification)
         {
-            _httpClientFactory = httpClientFactory;
+            _deliveryInfoService = deliveryInfoService;
             _toastNotification = toastNotification;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            ViewBag.V0 = "DeliveryInfo İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "DeliveryInfo";
-            ViewBag.V3 = "DeliveryInfo Listesi";
-
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7050/api/DeliveryInfos");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<List<ResultDeliveryInfoDto>>(jsonData);
-                return View(value);
-            }
-            return View();
+            DeliveryInfoViewBagList();
+            var values = await _deliveryInfoService.GetAllDeliveryInfoAsync();
+            return View(values);
         }
 
         [HttpGet]
         [Route("CreateDeliveryInfo")]
         public IActionResult CreateDeliveryInfo()
         {
-            ViewBag.V0 = "DeliveryInfo İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "DeliveryInfo";
-            ViewBag.V3 = "DeliveryInfo Ekle";
+            DeliveryInfoViewBagList();
             return View();
         }
 
@@ -56,66 +43,44 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateDeliveryInfo")]
         public async Task<IActionResult> CreateDeliveryInfo(CreateDeliveryInfoDto createDeliveryInfoDto)
         {
-
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createDeliveryInfoDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7050/api/DeliveryInfos", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createDeliveryInfoDto.Title), new ToastrOptions { Title = "Başarılı" });
-                return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
-            }
-            return View();
+            await _deliveryInfoService.CreateDeliveryInfoAsync(createDeliveryInfoDto);
+            _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createDeliveryInfoDto.Title), new ToastrOptions { Title = "Başarılı" });
+            return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
         }
 
         [HttpDelete("{id}")]
         [Route("DeleteDeliveryInfo/{id}")]
         public async Task<IActionResult> DeleteDeliveryInfo(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7050/api/DeliveryInfos?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                _toastNotification.AddErrorToastMessage(NotifyMessage.ResultTitle.Delete(id.ToString()), new ToastrOptions { Title = "Başarıyla Silindi" });
-                return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
-            }
-            return View();
+            await _deliveryInfoService.DeleteDeliveryInfoAsync(id);
+            _toastNotification.AddErrorToastMessage(NotifyMessage.ResultTitle.Delete(id.ToString()), new ToastrOptions { Title = "Başarıyla Silindi" });
+            return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
         }
 
         [HttpGet]
         [Route("UpdateDeliveryInfo/{id}")]
         public async Task<IActionResult> UpdateDeliveryInfo(string id)
         {
-            ViewBag.V0 = "DeliveryInfo İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "DeliveryInfo";
-            ViewBag.V3 = "DeliveryInfo Güncelle";
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7050/api/DeliveryInfos/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<UpdateDeliveryInfoDto>(jsonData);
-                return View(value);
-            }
-            return View();
+            DeliveryInfoViewBagList();
+            var value = await _deliveryInfoService.GetByIdDeliveryInfoAsync(id);
+            return View(value);
         }
 
         [HttpPost]
         [Route("UpdateDeliveryInfo/{id}")]
         public async Task<IActionResult> UpdateDeliveryInfo(UpdateDeliveryInfoDto updateDeliveryInfoDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateDeliveryInfoDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7050/api/DeliveryInfos", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateDeliveryInfoDto.Title), new ToastrOptions { Title = "Başarıyla Güncellendi" });
-                return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
-            }
-            return View();
+            await _deliveryInfoService.UpdateDeliveryInfoAsync(updateDeliveryInfoDto);
+            _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateDeliveryInfoDto.Title), new ToastrOptions { Title = "Başarıyla Güncellendi" });
+            return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
+
+        }
+
+        void DeliveryInfoViewBagList()
+        {
+            ViewBag.V0 = "DeliveryInfo İşlemleri";
+            ViewBag.V1 = "Anasayfa";
+            ViewBag.V2 = "DeliveryInfo";
         }
     }
 }

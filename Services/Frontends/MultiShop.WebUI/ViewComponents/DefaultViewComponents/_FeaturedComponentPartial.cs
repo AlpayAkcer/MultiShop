@@ -1,30 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.DtoLayer.CatalogDtos.DeliveryInfoDtos;
-using Newtonsoft.Json;
-using NToastNotify;
+using MultiShop.WebUI.Services.CatalogServices.DeliveryInfoServices;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _FeaturedComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IDeliveryInfoService _deliveryInfoService;
 
-        public _FeaturedComponentPartial(IHttpClientFactory httpClientFactory)
+        public _FeaturedComponentPartial(IDeliveryInfoService deliveryInfoService)
         {
-            _httpClientFactory = httpClientFactory;
+            _deliveryInfoService = deliveryInfoService;
         }
-
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7050/api/DeliveryInfos");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<List<ResultDeliveryInfoDto>>(jsonData);
-                return View(value);
-            }
-            return View();
+            var values = await _deliveryInfoService.GetAllDeliveryInfoAsync();
+            return View(values);
         }
     }
 }

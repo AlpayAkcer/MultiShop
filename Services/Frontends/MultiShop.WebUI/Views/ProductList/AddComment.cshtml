@@ -1,4 +1,4 @@
-﻿@model CreateCategoryDto
+﻿@model CreateCommentDto
 
 @{
     string proId = ViewBag.pid;
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <form method="post" asp-controller="ProductList" asp-action="AddComment">
+    <form method="post">
         <input type="hidden" id="@proId" name="@proId" />
         <div class="form-group">
             <label for="name">Adınız Soyadınız*</label>
