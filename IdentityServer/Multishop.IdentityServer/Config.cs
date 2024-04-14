@@ -53,41 +53,63 @@ namespace Multishop.IdentityServer
                 ClientName="Multi Shop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
-                AllowedScopes={"CatalogReadPermission","CatalogFullPermission","OcelotFullPermission","CommentFullPermission","ImageFullPermission", "CommentFullPermission",
-                IdentityServerConstants.LocalApi.ScopeName },
+                AllowedScopes={
+                    "CatalogReadPermission",
+                    "CatalogFullPermission",
+                    "OcelotFullPermission",
+                    "CommentFullPermission",
+                    "ImageFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName
+                },
                 AllowAccessTokensViaBrowser=true
                 },
 
             //Manager yetkileri
             new Client
             {
-                ClientId="MultishopManagerId",
+                ClientId="MultiShopManagerId",
                 ClientName="Multi Shop Manager User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImagesFullPermission",
-                    IdentityServerConstants.LocalApi.ScopeName,
+                  AllowedScopes={
+                    "CatalogReadPermission",
+                    "CatalogFullPermission",
+                    "BasketFullPermission",
+                    "OcelotFullPermission",
+                    "CommentFullPermission",
+                    "PaymentFullPermission",
+                    "ImageFullPermission",
+                    "DiscountFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
-                IdentityServerConstants.StandardScopes.Profile,
                 IdentityServerConstants.StandardScopes.OpenId,
-                },
-                AccessTokenLifetime=1000
+                IdentityServerConstants.StandardScopes.Profile }
             },
 
             //Admin yetkileri
             new Client
             {
-                ClientId="MultishopAdminId",
+                ClientId="MultiShopAdminId",
                 ClientName="Multi Shop Admin User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
-                AllowedScopes={ "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission","CargoFullPermission","BasketFullPermission","OcelotFullPermission",
-                    "CommentFullPermission","ImagesFullPermission",
+                AllowedScopes={
+                    "CatalogFullPermission",
+                    "CatalogReadPermission",
+                    "DiscountFullPermission",
+                    "OrderFullPermisson",
+                    "CargoFullPermission",
+                    "BasketFullPermission",
+                    "OcelotFullPermission",
+                    "CommentFullPermission",
+                    "PaymentFullPermission",
+                    "ImageFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
-                IdentityServerConstants.StandardScopes.Profile,
-                IdentityServerConstants.StandardScopes.OpenId},
-                AccessTokenLifetime=1000
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile
+                },
+                AccessTokenLifetime=600
             }
         };
     }

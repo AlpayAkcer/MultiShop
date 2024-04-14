@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Multishop.Catalog.Entites;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductPictureDtos;
 using MultiShop.WebUI.ResultMessage;
@@ -20,10 +19,12 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         private readonly IProductPictureService _productPictureService;
         private readonly IProductService _productService;
         private readonly IToastNotification _toastNotification;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ProductPictureController(IProductPictureService productPictureService, IToastNotification toastNotification, IProductService productService)
+        public ProductPictureController(IHttpClientFactory httpClientFactory, IProductPictureService productPictureService, IToastNotification toastNotification, IProductService productService)
         {
             _productPictureService = productPictureService;
+            _httpClientFactory = httpClientFactory;
             _toastNotification = toastNotification;
             _productService = productService;
         }
@@ -49,31 +50,31 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateProductPicture")]
         public async Task<IActionResult> CreateProductPicture(CreateProductPictureDto createProductPictureDto)
         {
-            //var client = _httpClientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
 
-            //foreach (var file in createProductPictureDto.MultiFile)
-            //{
-            //    if (file.Length > 0)
-            //    {
-            //        var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-            //        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", uniqueFileName);
-            //        using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-            //        {
-            //            await file.CopyToAsync(stream);
-            //        }
+            foreach (var file in createProductPictureDto.MultiFile)
+            {
+                if (file.Length > 0)
+                {
+                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", uniqueFileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
 
-            //        var jsonData = JsonConvert.SerializeObject(createProductPictureDto);
-            //        StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            //        createProductPictureDto.PictureUrl = uniqueFileName;
+                    var jsonData = JsonConvert.SerializeObject(createProductPictureDto);
+                    StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                    createProductPictureDto.PictureUrl = uniqueFileName;
 
-            //        var responseMessage = await client.PostAsync("https://localhost:7050/api/ProductPictures", stringContent);
-            //        if (responseMessage.IsSuccessStatusCode)
-            //        {
+                    var responseMessage = await client.PostAsync("https://localhost:7050/api/ProductPictures", stringContent);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
 
-            //            _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createProductPictureDto.ProductId), new ToastrOptions { Title = "Başarılı" });
-            //        }
-            //    }
-            //}
+                        _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createProductPictureDto.ProductId), new ToastrOptions { Title = "Başarılı" });
+                    }
+                }
+            }
             return RedirectToAction("Index", "ProductPicture", new { Area = "Admin" });
         }
 

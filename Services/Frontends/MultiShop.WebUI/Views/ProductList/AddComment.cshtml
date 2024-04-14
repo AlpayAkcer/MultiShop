@@ -1,9 +1,4 @@
-﻿@model CreateCommentDto
-
-@{
-    string proId = ViewBag.pid;
-}
-<div class="col-md-6">
+﻿<div class="col-md-6">
     <h4 class="mb-4">Yorum Bırakın</h4>
     <small>Yorum eklemek için giriş yapmanız gerekmektedir. *</small>
     <div class="d-flex my-3">
@@ -17,8 +12,7 @@
         </div>
     </div>
 
-    <form method="post">
-        <input type="hidden" id="@proId" name="@proId" />
+    <form method="post" asp-action="AddComment" asp-controller="ProductList">
         <div class="form-group">
             <label for="name">Adınız Soyadınız*</label>
             <input type="text" class="form-control" id="name" name="NameSurname">
@@ -36,7 +30,7 @@
             <input type="email" class="form-control" id="email" name="Email">
         </div>
         <div class="form-group mb-0">
-            <button type="submit" value="Yorumu Gönder" class="btn btn-primary px-3"></button>
+            <button type="submit" value="Yorumu Gönder" class="btn btn-primary px-3">Yorumu Gönder</button>
         </div>
     </form>
 </div>

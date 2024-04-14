@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
-using Multishop.Catalog.Entites;
 using Multishop.Catalog.Dtos.ContactDtos;
+using Multishop.Catalog.Entites;
 using Multishop.Catalog.Settings;
 
 namespace Multishop.Catalog.Services.ContactServices

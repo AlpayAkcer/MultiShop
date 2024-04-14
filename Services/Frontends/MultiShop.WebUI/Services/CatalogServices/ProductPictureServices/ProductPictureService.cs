@@ -1,6 +1,5 @@
 ﻿using MultiShop.DtoLayer.CatalogDtos.ProductPictureDtos;
 using Newtonsoft.Json;
-using ThirdParty.Json.LitJson;
 
 namespace MultiShop.WebUI.Services.CatalogServices.ProductPictureServices
 {

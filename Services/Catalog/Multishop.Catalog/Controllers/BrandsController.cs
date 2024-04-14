@@ -11,10 +11,9 @@ namespace Multishop.Catalog.Controllers
     public class BrandsController : ControllerBase
     {
         private readonly IBrandService _brandService;
-
-        public BrandsController(IBrandService brandService)
+        public BrandsController(IBrandService BrandService)
         {
-            _brandService = brandService;
+            _brandService = BrandService;
         }
 
         [HttpGet]
@@ -35,21 +34,21 @@ namespace Multishop.Catalog.Controllers
         public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
         {
             await _brandService.CreateBrandAsync(createBrandDto);
-            return Ok("Kayıt Başarılı");
+            return Ok("Marka başarıyla eklendi");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteBrand(string id)
         {
             await _brandService.DeleteBrandAsync(id);
-            return Ok("Kayıt Başarılı Bir Şekilde Silindi");
+            return Ok("Marka başarıyla silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto)
         {
             await _brandService.UpdateBrandAsync(updateBrandDto);
-            return Ok("Kayıt Başarıyla Güncellendi");
+            return Ok("Marka başarıyla güncellendi");
         }
     }
 }

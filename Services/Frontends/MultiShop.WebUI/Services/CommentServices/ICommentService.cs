@@ -6,7 +6,7 @@ namespace MultiShop.WebUI.Services.CommentServices
     public interface ICommentService
     {
         Task<List<ResultCommentDto>> GetAllCommentAsync();
-        Task<List<ResultCommentDto>> CommentListByProductId(string id);
+        Task<List<ResultCommentDto>> CommentListByProductId(string id); //Veritabanı olarak sql tuttuğumuz için id değeri int olacak
         Task CreateCommentAsync(CreateCommentDto createCommentDto);
         Task UpdateCommentAsync(UpdateCommentDto updateCommentDto);
         Task DeleteCommentAsync(string id);

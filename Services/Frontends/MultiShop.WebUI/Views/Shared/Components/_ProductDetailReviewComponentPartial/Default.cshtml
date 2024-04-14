@@ -9,7 +9,7 @@
             @foreach (var item in Model)
             {
                 <div class="media mb-4">
-                    <img src="@item.ImageUrl" alt="@item.NameSurname" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                    <img src="@item.ImageUrl" alt="@item.NameSurname" class="img-fluid mr-5 mt-1" style="width: 45px;">
                     <div class="media-body">
                         <h6>@item.NameSurname<small> - <i>@(((DateTime)item.CreatedDate).ToString("dd/MM/yyyy"))</i></small></h6>
                         <div class="text-primary mb-2">
@@ -25,7 +25,7 @@
 
         </div>
 
-        @*@await Html.PartialAsync("AddComment")*@
+        @await Html.PartialAsync("AddComment")
 
     </div>
 </div>

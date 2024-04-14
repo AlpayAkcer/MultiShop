@@ -8,6 +8,7 @@ namespace MultiShop.WebUI.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Home = "Anasayfa";
             return View();
         }
     }

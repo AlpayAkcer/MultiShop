@@ -32,8 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Basket\MultiShop.Basket\MultiShop.Basket.csproj" />
-    <ProjectReference Include="..\..\Catalog\Multishop.Catalog\Multishop.Catalog.csproj" />
     <ProjectReference Include="..\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj" />
   </ItemGroup>
 
