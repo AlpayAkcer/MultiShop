@@ -13,10 +13,17 @@
                     <div class="media-body">
                         <h6>@item.NameSurname<small> - <i>@(((DateTime)item.CreatedDate).ToString("dd/MM/yyyy"))</i></small></h6>
                         <div class="text-primary mb-2">
-                            @for (int i = 0; i < item.Rating; i++)
+                            @for (int i = 0; i < 5; i++)
                             {
-                                <i class="fas fa-star"></i>
-                            }
+                                if (i < item.Rating)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+                                else
+                                {
+                                    <i class="far fa-star"></i>
+                                }
+                            }                           
                         </div>
                         <p>@item.CommentDetail</p>
                     </div>
