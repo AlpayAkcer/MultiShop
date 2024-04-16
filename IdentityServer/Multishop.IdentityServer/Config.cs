@@ -35,7 +35,7 @@ namespace Multishop.IdentityServer
             new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
-            new ApiScope("OrderFullPermisson","Full authority for order operations"),
+            new ApiScope("OrderFullPermission","Full authority for order operations"),
             new ApiScope("CargoFullPermission","Full authority for cargo operations"),
             new ApiScope("BasketFullPermission","Full authority for basket operations"),
             new ApiScope("CommentFullPermission","Full authority for comment operations"),
@@ -47,6 +47,7 @@ namespace Multishop.IdentityServer
 
         public static IEnumerable<Client> Clients => new Client[]
         {
+            //Visitor kullanıcı girişi yapmamış olan kullanıcılar
             new Client
                 {
                 ClientId="MultiShopVisitorId",
@@ -64,7 +65,7 @@ namespace Multishop.IdentityServer
                 AllowAccessTokensViaBrowser=true
                 },
 
-            //Manager yetkileri
+            //Manager kullanıcı girişi yapmış olan kullanıcılar
             new Client
             {
                 ClientId="MultiShopManagerId",
@@ -80,13 +81,14 @@ namespace Multishop.IdentityServer
                     "PaymentFullPermission",
                     "ImageFullPermission",
                     "DiscountFullPermission",
+                    "OrderFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile }
             },
 
-            //Admin yetkileri
+            //Admin girişi yapmış olan kullanıcılar
             new Client
             {
                 ClientId="MultiShopAdminId",
@@ -97,7 +99,7 @@ namespace Multishop.IdentityServer
                     "CatalogFullPermission",
                     "CatalogReadPermission",
                     "DiscountFullPermission",
-                    "OrderFullPermisson",
+                    "OrderFullPermission",
                     "CargoFullPermission",
                     "BasketFullPermission",
                     "OcelotFullPermission",

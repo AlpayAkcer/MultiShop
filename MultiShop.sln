@@ -21,13 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{357DA090-5268-43FB-976F-CB8E9882D89F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multishop.Order.Domain", "Services\Order\Core\Multishop.Order.Domain\Multishop.Order.Domain.csproj", "{C91D8C87-ABED-4D3F-ADDC-8EA63917BB96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.Domain", "Services\Order\Core\Multishop.Order.Domain\MultiShop.Order.Domain.csproj", "{C91D8C87-ABED-4D3F-ADDC-8EA63917BB96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multishop.Order.Application", "Services\Order\Core\Multishop.Order.Application\Multishop.Order.Application.csproj", "{B41A332B-36B8-4357-B3FE-CA38DC272807}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.Application", "Services\Order\Core\Multishop.Order.Application\MultiShop.Order.Application.csproj", "{B41A332B-36B8-4357-B3FE-CA38DC272807}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multishop.Order.Persistence", "Services\Order\Infrastructure\Multishop.Order.Persistence\Multishop.Order.Persistence.csproj", "{8C1C6EEF-A24D-4C26-B73B-14A4A8E38F33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multishop.Order.WebApi", "Services\Order\Presentation\Multishop.Order.WebApi\Multishop.Order.WebApi.csproj", "{771CF0FA-C20A-41B5-A517-D4C1B9D6EFDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.WebApi", "Services\Order\Presentation\Multishop.Order.WebApi\MultiShop.Order.WebApi.csproj", "{771CF0FA-C20A-41B5-A517-D4C1B9D6EFDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{51639442-B605-4F2B-AFE4-21E095CBC233}"
 EndProject
@@ -35,9 +35,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multishop.IdentityServer", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requierments", "Requierments", "{2D51C0B4-B283-4DD4-B9C4-EB06341696A6}"
 	ProjectSection(SolutionItems) = preProject
+		C:\Users\Maverick\Downloads\MultiShop-master\FontAwesomeLink.txt = C:\Users\Maverick\Downloads\MultiShop-master\FontAwesomeLink.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\IdentityServerVersionErrorSolution.txt = C:\Users\Maverick\Downloads\MultiShop-master\IdentityServerVersionErrorSolution.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\LoginIndex.txt = C:\Users\Maverick\Downloads\MultiShop-master\LoginIndex.txt
 		LoginIndexPostJwtTokenAuthantication.txt = LoginIndexPostJwtTokenAuthantication.txt
 		OcelotCodeExample.txt = OcelotCodeExample.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\OcelotLink.txt = C:\Users\Maverick\Downloads\MultiShop-master\OcelotLink.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\OrderHtml.txt = C:\Users\Maverick\Downloads\MultiShop-master\OrderHtml.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\PortainerCmd.txt = C:\Users\Maverick\Downloads\MultiShop-master\PortainerCmd.txt
 		PortNumber.txt = PortNumber.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\SimpleCode.txt = C:\Users\Maverick\Downloads\MultiShop-master\SimpleCode.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\TokenExampleCodeUIProgramCs.txt = C:\Users\Maverick\Downloads\MultiShop-master\TokenExampleCodeUIProgramCs.txt
+		C:\Users\Maverick\Downloads\MultiShop-master\UserExample.txt = C:\Users\Maverick\Downloads\MultiShop-master\UserExample.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{EDA13E86-C7D1-42EB-80E8-9F2DF0FCA259}"
