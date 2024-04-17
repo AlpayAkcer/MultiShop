@@ -28,6 +28,7 @@ namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
                 ZipCode = createAddressCommand.ZipCode,
                 AddresLine1 = createAddressCommand.AddresLine1,
                 AddresLine2 = createAddressCommand.AddresLine2,
+                Description = createAddressCommand.Description
             });
         }
     }

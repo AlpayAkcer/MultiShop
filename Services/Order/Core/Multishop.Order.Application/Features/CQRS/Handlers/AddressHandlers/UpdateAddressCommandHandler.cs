@@ -27,6 +27,7 @@ namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
             value.ZipCode = command.ZipCode;
             value.AddresLine1 = command.AddresLine1;
             value.AddresLine2 = command.AddresLine2;
+            value.Description = command.Description;
             await _repository.UpdateAsync(value);
         }
     }

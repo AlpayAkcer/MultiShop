@@ -29,7 +29,8 @@ namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
                 District = x.District,
                 ZipCode = x.ZipCode,
                 AddresLine1 = x.AddresLine1,
-                AddresLine2 = x.AddresLine2
+                AddresLine2 = x.AddresLine2,
+                Description = x.Description
             }).ToList();
         }
     }

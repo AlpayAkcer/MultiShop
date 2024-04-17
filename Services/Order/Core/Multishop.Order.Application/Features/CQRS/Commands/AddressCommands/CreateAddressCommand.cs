@@ -13,5 +13,6 @@
         public string ZipCode { get; set; }
         public string AddresLine1 { get; set; }
         public string AddresLine2 { get; set; }
+        public string Description { get; set; }
     }
 }
