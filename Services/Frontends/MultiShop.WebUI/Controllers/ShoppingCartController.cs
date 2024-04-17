@@ -24,7 +24,8 @@ namespace MultiShop.WebUI.Controllers
         {
             ViewBag.code = code;
             ViewBag.discountRate = discountRate;
-            ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
+            var NewPriceWithDiscount = totalNewPriceWithDiscount;
+            ViewBag.totalNewPriceWithDiscount = NewPriceWithDiscount.ToString("C");
 
             ViewBag.Home = "Ana Sayfa";
             ViewBag.Home1 = "Ürünler";
@@ -59,7 +60,7 @@ namespace MultiShop.WebUI.Controllers
             await _basketService.AddBasketItem(items);
             _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(items.ProductName),
                 new ToastrOptions { Title = "Ürün Sepetinize Eklenmiştir " });
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Default");
         }
 
         public async Task<IActionResult> RemoveBasketItem(string productId)

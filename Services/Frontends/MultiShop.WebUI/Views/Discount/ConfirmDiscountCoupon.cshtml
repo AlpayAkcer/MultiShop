@@ -18,22 +18,27 @@
     <div class="bg-light p-30 mb-5">
         <div class="border-bottom pb-2">
             <div class="d-flex justify-content-between mb-1">
-                <h6>Toplam Ürün Fiyatı</h6>
+                <h6>Ara Toplam</h6>
                 <h6>@ViewBag.total</h6>
             </div>
             <div class="d-flex justify-content-between mb-1">
                 <h6 class="font-weight-medium">Kdv Tutarı</h6>
                 <h6 class="font-weight-medium">@ViewBag.tax</h6>
             </div>
+            <div class="d-flex justify-content-between mb-1">
+                <h6 class="font-weight-medium">Toplam Tutar</h6>
+                <h6 class="font-weight-medium">@ViewBag.totalPriceWithTax</h6>
+            </div>
             @if (ViewBag.discountRate != 0)
             {
+                <hr />
                 <div class="d-flex justify-content-between mb-1">
                     <h6 class="font-weight-medium">İndirim Oranı</h6>
                     <h6 class="font-weight-medium">% @ViewBag.discountRate</h6>
                 </div>
-                <div class="d-flex justify-content-between mb-1">
-                    <h6 class="font-weight-medium">Toplam Tutar</h6>
-                    <h6 class="font-weight-medium">@ViewBag.totalPriceWithTax</h6>
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-medium">İndirim Miktarı</h6>
+                    <h6 class="font-weight-medium">@ViewBag.DiscountTotal</h6>
                 </div>
             }
         </div>
@@ -41,22 +46,15 @@
             @if (ViewBag.discountRate != 0)
             {
                 <div class="d-flex justify-content-between mt-2">
-                    <h5>İndirim Miktarı</h5>
-                    <h5>@ViewBag.DiscountTotal</h5>
-                </div>
-                <div class="d-flex justify-content-between mt-2">
-                    <h5>İndirimli Güncel Tutar</h5>
+                    <h5>Ödenecek Toplam Tutar</h5>
                     <h5>@ViewBag.totalNewPriceWithDiscount</h5>
                 </div>
-                <p>
-
-                </p>
             }
             else
             {
                 <div class="d-flex justify-content-between mt-2">
                     <h5>Ödenecek Toplam Tutar</h5>
-                    <h5>@ViewBag.total </h5>
+                    <h5>@ViewBag.totalPriceWithTax </h5>
                 </div>
 
             }

@@ -19,10 +19,17 @@ namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
             return values.Select(x => new GetAddressQueryResult
             {
                 AddressId = x.AddressId,
+                UserId = x.UserId,
+                Name = x.Name,
+                Surname = x.Surname,
+                Email = x.Email,
+                Phone = x.Phone,
+                Country = x.Country,
                 City = x.City,
-                Detail = x.Detail,
                 District = x.District,
-                UserId = x.UserId
+                ZipCode = x.ZipCode,
+                AddresLine1 = x.AddresLine1,
+                AddresLine2 = x.AddresLine2
             }).ToList();
         }
     }

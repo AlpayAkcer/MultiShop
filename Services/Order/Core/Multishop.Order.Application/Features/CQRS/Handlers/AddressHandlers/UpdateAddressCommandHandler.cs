@@ -16,10 +16,17 @@ namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
         public async Task Handle(UpdateAddressCommand command)
         {
             var value = await _repository.GetByIdAsync(command.AddressId);
-            value.Detail = command.Detail;
-            value.City = command.City;
             value.UserId = command.UserId;
+            value.Name = command.Name;
+            value.Surname = command.Surname;
+            value.Email = command.Email;
+            value.Phone = command.Phone;
+            value.Country = command.Country;
+            value.City = command.City;
             value.District = command.District;
+            value.ZipCode = command.ZipCode;
+            value.AddresLine1 = command.AddresLine1;
+            value.AddresLine2 = command.AddresLine2;
             await _repository.UpdateAsync(value);
         }
     }

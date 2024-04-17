@@ -1,7 +1,12 @@
-﻿using Multishop.Order.Application.Features.CQRS.Queries.AddressQueries;
+﻿using Multishop.Order.Application.Features.CQRS.Commands.AddressCommands;
+using Multishop.Order.Application.Features.CQRS.Queries.AddressQueries;
 using Multishop.Order.Application.Features.CQRS.Results.AddressResults;
 using Multishop.Order.Application.Interfaces;
 using Multishop.Order.Domain.Entities;
+using System.Diagnostics.Metrics;
+using System.Numerics;
+using System.Reflection.Emit;
+using System.Xml.Linq;
 
 namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
 {
@@ -20,10 +25,17 @@ namespace Multishop.Order.Application.Features.CQRS.Handlers.AddressHandlers
             return new GetAddressByIdQueryResult
             {
                 AddressId = value.AddressId,
+                UserId = value.UserId,
+                Name = value.Name,
+                Surname = value.Surname,
+                Email = value.Email,
+                Phone = value.Phone,
+                Country = value.Country,
                 City = value.City,
                 District = value.District,
-                Detail = value.Detail,
-                UserId = value.UserId
+                ZipCode = value.ZipCode,
+                AddresLine1 = value.AddresLine1,
+                AddresLine2 = value.AddresLine2
             };
         }
     }
