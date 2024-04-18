@@ -3,9 +3,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Multishop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using Multishop.Order.Application.Features.Mediator.Queries.OrderingQueries;
+using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
 
 namespace Multishop.Order.WebApi.Controllers
 {
+    //Not: 
+    //Infrastructure/Multishop.Order.Persistence/Repositories yazdığımız her repository için önce typeof türünde program.cs tarafına tanıtmak gerekir, hem de buradaki controller için de method eklemesi gerekiyor. 
+
+    //Core/MultiShop.Order.Application/Features/Mediator içerisinde ekledğimiz commands,handler,queries, result class'ları ve interface'ler için de geçerli.Bunlara dikkat etmek gerekiyor.
+
+
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -22,6 +29,13 @@ namespace Multishop.Order.WebApi.Controllers
         public async Task<IActionResult> OrderingList()
         {
             var value = await _mediator.Send(new GetOrderingQuery());
+            return Ok(value);
+        }
+
+        [HttpGet("GetOrderingByUserId/{id}")]
+        public async Task<IActionResult> GetOrderingByUserId(string id)
+        {
+            var value = await _mediator.Send(new GetOrderingByUserIdQuery(id));
             return Ok(value);
         }
 
