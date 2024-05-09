@@ -31,6 +31,13 @@ namespace Multishop.Catalog.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetFiltersByProduct/{name}/{price}/{color}")]
+        public async Task<IActionResult> GetFiltersByProduct(string name = null, decimal? price = null, string color = null)
+        {
+            var values = await _productService.GetFiltersByProductList(name, price, color);
+            return Ok(values);
+        }
+
         [HttpGet("ProductListWithCategoryByCategoryID/{id}")]
         public async Task<IActionResult> ProductListWithCategoryByCategoryID(string id)
         {

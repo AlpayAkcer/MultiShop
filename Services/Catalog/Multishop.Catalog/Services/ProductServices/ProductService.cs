@@ -44,6 +44,25 @@ namespace Multishop.Catalog.Services.ProductServices
             return _mapper.Map<GetByIdProductDto>(value);
         }
 
+        //Filter için farklı bir dto da kullanılabilir, ürün özelliklerinin de içerisinde olduğu bir dto olabilir. denemek lazım
+        public async Task<List<ResultProductDto>> GetFiltersByProductList(string name = null, decimal? price = null, string color = null)
+        {
+            var value = await _productCollection.Find(x => true).ToListAsync();
+            if (name != null)
+            {
+                value = value.Where(x => x.Name.ToLower().Contains(name.ToLower())).ToList();
+            }
+            if (price != null)
+            {
+                value = value.Where(x => x.Price.ToString().Contains(price.ToString())).ToList();
+            }
+            if (color != null)
+            {
+                value = value.Where(x => x.Category.Name.ToLower().Contains(color.ToLower())).ToList();
+            }
+            return _mapper.Map<List<ResultProductDto>>(value);
+        }
+
         public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCategoryIDAsync(string categoryid)
         {
             var value = await _productCollection.Find(x => x.CategoryId == categoryid).ToListAsync();

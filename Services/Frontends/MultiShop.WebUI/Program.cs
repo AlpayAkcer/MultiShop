@@ -20,6 +20,7 @@ using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Settings;
 using NToastNotify;
 using MultiShop.WebUI.Services.OrderServices.OrderOrderingServices;
+using MultiShop.WebUI.Services.MessageServices;
 
 
 
@@ -94,6 +95,11 @@ builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
 builder.Services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IProductService, ProductService>(opt =>

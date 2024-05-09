@@ -19,6 +19,7 @@ namespace Multishop.IdentityServer
             new ApiResource("ResourceBasket"){Scopes ={"BasketFullPermission"}},
             new ApiResource("ResourceComment"){Scopes ={"CommentFullPermission"}},
             new ApiResource("ResourcePayment"){Scopes ={"PaymentFullPermission"}},
+            new ApiResource("ResourceMessage"){Scopes ={"MessageFullPermission"}},
             new ApiResource("ResourceImages"){Scopes ={"ImagesFullPermission"}},
             new ApiResource("ResourceOcelot"){Scopes ={"OcelotFullPermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
@@ -40,6 +41,7 @@ namespace Multishop.IdentityServer
             new ApiScope("BasketFullPermission","Full authority for basket operations"),
             new ApiScope("CommentFullPermission","Full authority for comment operations"),
             new ApiScope("PaymentFullPermission","Full authority for payment operations"),
+            new ApiScope("MessageFullPermission","Full authority for message operations"),
             new ApiScope("ImageFullPermission","Full authority for image operations"),
             new ApiScope("OcelotFullPermission","Full authority for ocelot operations"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
@@ -80,6 +82,7 @@ namespace Multishop.IdentityServer
                     "CommentFullPermission",
                     "PaymentFullPermission",
                     "ImageFullPermission",
+                    "MessageFullPermission",
                     "DiscountFullPermission",
                     "OrderFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
@@ -104,6 +107,7 @@ namespace Multishop.IdentityServer
                     "BasketFullPermission",
                     "OcelotFullPermission",
                     "CommentFullPermission",
+                    "MessageFullPermission",
                     "PaymentFullPermission",
                     "ImageFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
