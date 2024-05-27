@@ -11,6 +11,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/DeliveryInfo")]
+    [Authorize]
     public class DeliveryInfoController : Controller
     {
         private readonly IDeliveryInfoService _deliveryInfoService;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.SliderDtos;
 using MultiShop.WebUI.ResultMessage;
 using MultiShop.WebUI.Services.CatalogServices.SliderServices;
@@ -8,6 +9,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/Slider")]
+    [Authorize]
     public class SliderController : Controller
     {
         private readonly ISliderService _sliderService;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDtos;
 using MultiShop.WebUI.ResultMessage;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
@@ -8,6 +9,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/SpecialOffer")]
+    [Authorize]
     public class SpecialOfferController : Controller
     {
         private readonly ISpecialOfferService _specialOfferService;

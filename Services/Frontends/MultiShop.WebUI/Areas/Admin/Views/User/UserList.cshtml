@@ -1,0 +1,53 @@
+﻿@model List<ResultUserDto>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Ad Soyad</th>
+                            <th class="sortable">Kullanıcı Adı</th>
+                            <th class="sortable">Email</th>
+                            <th class="sortable">Email Doğrulama</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.FirstName @item.Surname</td>
+                            <td class="text-truncate">@item.UserName</td>
+                            <td class="text-truncate">@item.Email</td>
+                            <td class="text-truncate">
+                                @if (item.EmailConfirmed == false)
+                                {
+                                    <span class="badge badge-danger">Doğrulanmadı</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-success">Doğrulandı</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="/Admin/UserDetail/@item.Id" class="btn btn-warning">
+                                    <i class="fa fa-eye-slash"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

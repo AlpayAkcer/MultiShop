@@ -1,0 +1,31 @@
+﻿@model UpdateCargoCompanyDto
+
+
+<div class="modal" tabindex="-1" role="dialog" id="modalUpdateCargo-@Model.CargoCompanyId">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title"><b>DİKKAT !!</b> @Model.CargoName Güncelle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Cargo" asp-action="UpdateCargoCompany" asp-route-id="@Model.CargoCompanyId" asp-area="Admin" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="@Model.CargoCompanyId" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="CargoCompanyId" type="text" readonly>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input class="form-control" asp-for="CargoName" type="text">
+                            </fieldset>
+                            <button class="btn btn-warning float-right" type="submit">Güncelle</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

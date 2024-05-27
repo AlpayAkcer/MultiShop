@@ -1,0 +1,30 @@
+﻿
+@model CreateCargoCompanyDto
+
+@{
+    ViewData["Title"] = "CreateCompany";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yeni KArgo Firması Girişi</h4>
+                <form asp-controller="Cargo" asp-action="CreateCargoCompany" asp-area="Admin" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <fieldset class="form-group">
+                                <input class="form-control" autofocus asp-for="CargoName" placeholder="Firma Adını Giriniz" type="text">
+                            </fieldset>
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+

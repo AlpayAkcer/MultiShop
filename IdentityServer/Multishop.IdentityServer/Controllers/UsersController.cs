@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Multishop.IdentityServer.Models;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +12,6 @@ using static IdentityServer4.IdentityServerConstants;
 namespace Multishop.IdentityServer.Controllers
 {
     [Authorize(LocalApi.PolicyName)]
-
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -34,6 +35,13 @@ namespace Multishop.IdentityServer.Controllers
                 Email = user.Email,
                 UserName = user.UserName
             });
+        }
+
+        [HttpGet("GetAllUserList")]
+        public async Task<IActionResult> GetAllUserList()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            return Ok(users);
         }
     }
 }

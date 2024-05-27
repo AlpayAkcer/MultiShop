@@ -14,6 +14,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/ProductPicture")]
+    [Authorize]
     public class ProductPictureController : Controller
     {
         private readonly IProductPictureService _productPictureService;

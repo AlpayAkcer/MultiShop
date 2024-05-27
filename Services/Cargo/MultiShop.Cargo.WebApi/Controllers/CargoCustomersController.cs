@@ -38,12 +38,14 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoCustomer cargoCustomer = new CargoCustomer
             {
                 CustomerAddress = createCargoCustomerDto.CustomerAddress,
+                CustomerTitle = createCargoCustomerDto.CustomerTitle,
                 CustomerCity = createCargoCustomerDto.CustomerCity,
                 CustomerDistrict = createCargoCustomerDto.CustomerDistrict,
                 CustomerEmail = createCargoCustomerDto.CustomerEmail,
                 CustomerName = createCargoCustomerDto.CustomerName,
                 CustomerPhone = createCargoCustomerDto.CustomerPhone,
-                CustomerSurname = createCargoCustomerDto.CustomerSurname
+                CustomerSurname = createCargoCustomerDto.CustomerSurname,
+                UserCustomerId = createCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TInsert(cargoCustomer);
             return Ok("Kargo Şirketi Başarıyla Oluşturuldu.");
@@ -62,13 +64,15 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoCustomer cargoCustomer = new CargoCustomer
             {
                 CargoCustomerId = updateCargoCustomerDto.CargoCustomerId,
+                CustomerTitle = updateCargoCustomerDto.CustomerTitle,
                 CustomerAddress = updateCargoCustomerDto.CustomerAddress,
                 CustomerCity = updateCargoCustomerDto.CustomerCity,
                 CustomerDistrict = updateCargoCustomerDto.CustomerDistrict,
                 CustomerEmail = updateCargoCustomerDto.CustomerEmail,
                 CustomerName = updateCargoCustomerDto.CustomerName,
                 CustomerPhone = updateCargoCustomerDto.CustomerPhone,
-                CustomerSurname = updateCargoCustomerDto.CustomerSurname
+                CustomerSurname = updateCargoCustomerDto.CustomerSurname,
+                UserCustomerId = updateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TUpdate(cargoCustomer);
             return Ok("Kargo Şirketi Başarıyla Güncellendi.");

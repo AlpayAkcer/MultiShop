@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.ProductDetailDto;
 using MultiShop.WebUI.ResultMessage;
@@ -10,6 +11,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/ProductDetail")]
+    [Authorize]
     public class ProductDetailController : Controller
     {
         private readonly IProductDetailService _productDetailService;

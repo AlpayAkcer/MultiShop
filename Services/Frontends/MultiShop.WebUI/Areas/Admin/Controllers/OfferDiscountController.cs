@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.OfferDiscountDtos;
 using MultiShop.WebUI.ResultMessage;
 using MultiShop.WebUI.Services.CatalogServices.OfferDiscountServices;
@@ -8,6 +9,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/OfferDiscount")]
+    [Authorize]
     public class OfferDiscountController : Controller
     {
         private readonly IOfferDiscountService _offerDiscountService;

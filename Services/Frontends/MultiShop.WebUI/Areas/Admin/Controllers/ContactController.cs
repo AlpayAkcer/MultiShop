@@ -10,6 +10,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/Contact")]
+    [Authorize]
     public class ContactController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

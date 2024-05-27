@@ -10,6 +10,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/Comment")]
+    [Authorize]
     public class CommentController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

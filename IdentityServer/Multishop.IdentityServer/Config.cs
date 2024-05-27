@@ -82,6 +82,7 @@ namespace Multishop.IdentityServer
                     "CommentFullPermission",
                     "PaymentFullPermission",
                     "ImageFullPermission",
+                    "CargoFullPermission",
                     "MessageFullPermission",
                     "DiscountFullPermission",
                     "OrderFullPermission",

@@ -9,50 +9,146 @@
         </div>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header dark-bg">Menu</li>
+            <li class="header dark-bg">Yönetim Menü Listesi</li>
             <li>
-                <a href="/Admin/Brand">
-                    <i class="fa fa-th"></i> <span>Markalar</span>
+                <a href="/Admin/">
+                    <i class="fa fa-users"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a href="/Admin/Category">
-                    <i class="fa fa-th"></i> <span>Kategoriler</span>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bullseye"></i>
+                    <span>Katalog</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/Admin/Category">
+                            <i class="fa fa-angle-right"></i>Kategoriler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Product">
+                            <i class="fa fa-angle-right"></i>Ürünler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Brand">
+                            <i class="fa fa-angle-right"></i>Markalar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Brand">
+                            <i class="fa fa-angle-right"></i>Görseller
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="/Admin/Product">
-                    <i class="fa fa-th"></i> <span>Ürünler</span>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bullseye"></i>
+                    <span>İndirimler</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/Admin/Discount">
+                            <i class="fa fa-angle-right"></i>İndirimler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/SpecialOffer">
+                            <i class="fa fa-angle-right"></i>Fırsat & Indirim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/OfferDiscount">
+                            <i class="fa fa-angle-right"></i>Katalog & Indirim
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bullseye"></i>
+                    <span>Site Tanımlamaları</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/Admin/UserList">
+                            <i class="fa fa-angle-right"></i>Kullanıcılar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Slider">
+                            <i class="fa fa-angle-right"></i>Slider
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/DeliveryInfo">
+                            <i class="fa fa-angle-right"></i>Kargo & Ödeme Bildirim
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Siparişler</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/Admin/">
+                            <i class="fa fa-angle-right"></i>Siparişler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/SpecialOffer">
+                            <i class="fa fa-angle-right"></i>Kasa
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Cargo">
+                            <i class="fa fa-angle-right"></i>Kargo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/OfferDiscount">
+                            <i class="fa fa-angle-right"></i>Ödemeler
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="/Admin/Comment">
-                    <i class="fa fa-th"></i> <span>Yorumlar</span>
+                    <i class="fa fa-comment"></i> <span>Yorumlar</span>
                 </a>
             </li>
             <li>
-                <a href="/Admin/Slider">
-                    <i class="fa fa-th"></i> <span>Slider</span>
-                </a>
-            </li>
-            <li>
-                <a href="/Admin/SpecialOffer">
-                    <i class="fa fa-th"></i> <span>Fırsat & Indirim</span>
-                </a>
-            </li>
-            <li>
-                <a href="/Admin/OfferDiscount">
-                    <i class="fa fa-th"></i> <span>Katalog & Indirim</span>
-                </a>
-            </li>
-            <li>
-                <a href="/Admin/DeliveryInfo">
-                    <i class="fa fa-th"></i> <span>Kargo & Ödeme Bildirim</span>
+                <a href="/Admin/">
+                    <i class="fa fa-pencil-square"></i> <span>Mesajlar</span>
                 </a>
             </li>
             <li>
                 <a href="/Default" target="_blank">
-                    <i class="fa fa-th"></i> <span>Siteye Git</span>
+                    <i class="fa fa-wechat"></i> <span>Siteye Git</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Logout" target="_blank">
+                    <i class="fa fa-close"></i> <span>Oturumu Kapat</span>
                 </a>
             </li>
         </ul>
