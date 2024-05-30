@@ -3,7 +3,7 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 @await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
 
 <body class="sidebar-mini">
@@ -14,15 +14,13 @@
         <!-- Left side column. contains the logo and sidebar -->
         @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
 
-        <div class="content-wrapper">
-            @await Component.InvokeAsync("_AdminLayoutMainSectionViewBagComponentPartial")
+        <div class="content-wrapper">           
             @RenderBody()
         </div>
         <!-- Content Wrapper. Contains page content -->
     </div>
     <!-- wrapper -->
     @await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
-
 
     @await Component.InvokeAsync("NToastNotify")
 </body>

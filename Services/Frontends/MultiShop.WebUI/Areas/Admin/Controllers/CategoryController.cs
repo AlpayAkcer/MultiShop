@@ -25,8 +25,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            CategoryViewBagList();
-
             var values = await _categoryService.GetAllCategoryAsync();
             return View(values);
         }
@@ -35,7 +33,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateCategory")]
         public IActionResult CreateCategory()
         {
-            CategoryViewBagList();
             return View();
         }
 
@@ -61,7 +58,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateCategory/{id}")]
         public async Task<IActionResult> UpdateCategory(string id)
         {
-            CategoryViewBagList();
             var values = await _categoryService.GetByIdCategoryAsync(id);
             return View(values);
         }
@@ -73,13 +69,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _categoryService.UpdateCategoryAsync(updateCategoryDto);
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateCategoryDto.Name), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("Index", "Category", new { Area = "Admin" });
-        }
-
-        void CategoryViewBagList()
-        {
-            ViewBag.V0 = "Kategori İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Kategoriler";
         }
     }
 }

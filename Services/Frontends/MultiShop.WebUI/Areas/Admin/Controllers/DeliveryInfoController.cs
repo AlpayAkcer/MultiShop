@@ -26,7 +26,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            DeliveryInfoViewBagList();
             var values = await _deliveryInfoService.GetAllDeliveryInfoAsync();
             return View(values);
         }
@@ -35,7 +34,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateDeliveryInfo")]
         public IActionResult CreateDeliveryInfo()
         {
-            DeliveryInfoViewBagList();
             return View();
         }
 
@@ -61,7 +59,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateDeliveryInfo/{id}")]
         public async Task<IActionResult> UpdateDeliveryInfo(string id)
         {
-            DeliveryInfoViewBagList();
             var value = await _deliveryInfoService.GetByIdDeliveryInfoAsync(id);
             return View(value);
         }
@@ -74,13 +71,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateDeliveryInfoDto.Title), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("Index", "DeliveryInfo", new { Area = "Admin" });
 
-        }
-
-        void DeliveryInfoViewBagList()
-        {
-            ViewBag.V0 = "DeliveryInfo İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "DeliveryInfo";
         }
     }
 }

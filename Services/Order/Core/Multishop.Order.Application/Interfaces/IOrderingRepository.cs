@@ -11,5 +11,6 @@ namespace MultiShop.Order.Application.Interfaces
     {
         //Kullanıcının id değerine göre sipraişleri getiren method
         public List<Ordering> GetOrderingByUserId(string id);
+        int GetOrderTotalCount();
     }
 }

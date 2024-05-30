@@ -43,5 +43,6 @@ namespace Multishop.IdentityServer.Controllers
             var users = await _userManager.Users.ToListAsync();
             return Ok(users);
         }
+       
     }
 }

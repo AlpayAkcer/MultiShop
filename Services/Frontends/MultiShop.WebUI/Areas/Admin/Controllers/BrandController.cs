@@ -27,7 +27,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            BrandViewBagList();
             var values = await _brandService.GetAllBrandAsync();
             return View(values);
         }
@@ -36,7 +35,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateBrand")]
         public IActionResult CreateBrand()
         {
-            BrandViewBagList();
             return View();
         }
 
@@ -62,7 +60,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateBrand/{id}")]
         public async Task<IActionResult> UpdateBrand(string id)
         {
-            BrandViewBagList();
             var values = await _brandService.GetByIdBrandAsync(id);
             return View(values);
         }
@@ -74,13 +71,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _brandService.UpdateBrandAsync(updateBrandDto);
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateBrandDto.BrandName), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("Index", "Brand", new { Area = "Admin" });
-        }
-
-        void BrandViewBagList()
-        {
-            ViewBag.V0 = "Marka İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Markalar";
         }
     }
 }

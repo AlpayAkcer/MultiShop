@@ -24,7 +24,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            SpecialOfferViewBagList();
             var values = await _specialOfferService.GetAllSpecialOfferAsync();
             return View(values);
         }
@@ -33,7 +32,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateSpecialOffer")]
         public IActionResult CreateSpecialOffer()
         {
-            SpecialOfferViewBagList();
             return View();
         }
 
@@ -59,7 +57,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateSpecialOffer/{id}")]
         public async Task<IActionResult> UpdateSpecialOffer(string id)
         {
-            SpecialOfferViewBagList();
             var values = await _specialOfferService.GetByIdSpecialOfferAsync(id);
             return View(values);
         }
@@ -71,13 +68,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _specialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateSpecialOfferDto.Title), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("Index", "SpecialOffer", new { Area = "Admin" });
-        }
-
-        void SpecialOfferViewBagList()
-        {
-            ViewBag.V0 = "Special Offer İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Special Offer";
         }
     }
 }

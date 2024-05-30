@@ -19,5 +19,11 @@ namespace Multishop.Order.Persistence.Repositories
             var values = _orderContext.Orderings.Where(x => x.UserId == id).ToList();
             return values;
         }
+
+        public int GetOrderTotalCount()
+        {
+            var values = _orderContext.Orderings.Count();
+            return values;
+        }
     }
 }

@@ -12,6 +12,7 @@ using Multishop.Catalog.Services.BrandServices;
 using Multishop.Catalog.Settings;
 using System.Reflection;
 using Multishop.Catalog.Services.ContactServices;
+using Multishop.Catalog.Services.StatisticServices;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 builder.Services.AddScoped<IDeliveryInfoService, DeliveryInfoService>();
 builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IContactService, ContactService>();
 

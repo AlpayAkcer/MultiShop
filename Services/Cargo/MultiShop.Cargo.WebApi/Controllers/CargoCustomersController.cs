@@ -48,14 +48,14 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 UserCustomerId = createCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TInsert(cargoCustomer);
-            return Ok("Kargo Şirketi Başarıyla Oluşturuldu.");
+            return Ok("Kargo Müşterisi Başarıyla Oluşturuldu.");
         }
 
         [HttpDelete]
         public IActionResult RemoveCargoCustomer(int id)
         {
             _cargoCustomerService.TDelete(id);
-            return Ok("Kargo Şirketi Başarıyla Silindi.");
+            return Ok("Kargo Müşterisi Başarıyla Silindi.");
         }
 
         [HttpPut]
@@ -75,7 +75,26 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 UserCustomerId = updateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TUpdate(cargoCustomer);
-            return Ok("Kargo Şirketi Başarıyla Güncellendi.");
+            return Ok("Kargo Müşterisi Başarıyla Güncellendi.");
+        }
+
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCustomerById(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerById(id));
+        }
+
+        [HttpGet("GetCargoCustomerListById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerList(id));
+        }
+
+        [HttpGet("GetCargoCustomerCount")]
+        public IActionResult GetCargoCustomerCount()
+        {
+            var value = _cargoCustomerService.TGetCargoCustomerCount();
+            return Ok(value);
         }
     }
 }

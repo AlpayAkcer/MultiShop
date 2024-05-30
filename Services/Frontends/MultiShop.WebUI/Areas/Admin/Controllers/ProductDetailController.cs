@@ -28,7 +28,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            ProductDetailViewBagList();
             var values = await _productDetailService.GetAllProductDetailAsync();
             return View(values);
         }
@@ -38,7 +37,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public IActionResult CreateProductDetail()
         {
             ProductList();  //Ürün Listesi
-            ProductDetailViewBagList();
             return View();
         }
 
@@ -64,7 +62,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateProductDetail/{id}")]
         public async Task<IActionResult> UpdateProductDetail(string id)
         {
-            ProductDetailViewBagList();
             ProductList();
             var values = await _productDetailService.GetByIdProductDetailAsync(id);
             return View(values);
@@ -91,13 +88,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                                                  }).ToList();
             ViewBag.ProductList = productValue;
             #endregion
-        }
-
-        void ProductDetailViewBagList()
-        {
-            ViewBag.V0 = "Ürün Detay İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Ürün Detay";
         }
     }
 }

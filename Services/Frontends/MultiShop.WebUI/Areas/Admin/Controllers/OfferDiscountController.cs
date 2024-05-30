@@ -25,8 +25,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-
-            OfferDiscountViewBagList();
             var values = await _offerDiscountService.GetAllOfferDiscountAsync();
             return View(values);
         }
@@ -35,7 +33,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateOfferDiscount")]
         public IActionResult CreateOfferDiscount()
         {
-            OfferDiscountViewBagList();
             return View();
         }
 
@@ -61,7 +58,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateOfferDiscount/{id}")]
         public async Task<IActionResult> UpdateOfferDiscount(string id)
         {
-            OfferDiscountViewBagList();
             var values = await _offerDiscountService.GetByIdOfferDiscountAsync(id);
             return View(values);
         }
@@ -73,13 +69,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _offerDiscountService.UpdateOfferDiscountAsync(updateOfferDiscountDto);
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateOfferDiscountDto.Title), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("Index", "OfferDiscount", new { Area = "Admin" });
-        }
-
-        void OfferDiscountViewBagList()
-        {
-            ViewBag.V0 = "OfferDiscount İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "OfferDiscountler";
-        }
+        }      
     }
 }

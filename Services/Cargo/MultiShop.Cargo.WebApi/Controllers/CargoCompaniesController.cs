@@ -61,5 +61,12 @@ namespace MultiShop.Cargo.WebApi.Controllers
             _cargoCompanyService.TUpdate(cargoCompany);
             return Ok("Kargo Şirketi Başarıyla Güncellendi.");
         }
+
+        [HttpGet("GetCargoCompanyCount")]
+        public IActionResult GetCargoCompanyCount()
+        {
+            var value = _cargoCompanyService.TGetCargoCompanyCount();
+            return Ok(value);
+        }
     }
 }

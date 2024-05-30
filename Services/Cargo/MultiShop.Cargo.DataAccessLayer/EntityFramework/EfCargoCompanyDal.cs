@@ -7,8 +7,16 @@ namespace MultiShop.Cargo.DataAccessLayer.EntityFramework
 {
     public class EfCargoCompanyDal : GenericRepository<CargoCompany>, ICargoCompanyDal
     {
-        public EfCargoCompanyDal(CargoContext context) : base(context)
+        private readonly CargoContext _cargocontext;
+        public EfCargoCompanyDal(CargoContext context, CargoContext cargocontext) : base(context)
         {
+            _cargocontext = cargocontext;
+        }
+
+        public int GetCargoCompanyCount()
+        {
+            var companyCount = _cargocontext.CargoCompanies.Count();
+            return companyCount;
         }
     }
 }

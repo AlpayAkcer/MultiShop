@@ -33,7 +33,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateSlider")]
         public IActionResult CreateSlider()
         {
-            SliderViewBagList();
             return View();
         }
 
@@ -59,7 +58,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateSlider/{id}")]
         public async Task<IActionResult> UpdateSlider(string id)
         {
-            SliderViewBagList();
             var values = await _sliderService.GetByIdSliderAsync(id);
             return View(values);
         }
@@ -71,13 +69,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _sliderService.UpdateSliderAsync(updateSliderDto);
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateSliderDto.Title), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("Index", "Slider", new { Area = "Admin" });
-        }
-
-        void SliderViewBagList()
-        {
-            ViewBag.V0 = "SpecialOffer İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Slider";
         }
     }
 }

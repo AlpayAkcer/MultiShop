@@ -23,7 +23,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CargoCompanyList()
         {
-            CargoCompanyViewBagList();
             var value = await _cargoCompanyService.GetAllCargoCompanyListAsync();
             return View(value);
         }
@@ -32,7 +31,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateCargoCompany")]
         public IActionResult CreateCompany()
         {
-            CargoCompanyViewBagList();
             return View();
         }
 
@@ -70,13 +68,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _cargoCompanyService.UpdateCargoCompanyAsync(updateCargoCompanyDto);
             _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateCargoCompanyDto.CargoName), new ToastrOptions { Title = "Başarıyla Güncellendi" });
             return RedirectToAction("CargoCompanyList", "Cargo", new { Area = "Admin" });
-        }
-
-        void CargoCompanyViewBagList()
-        {
-            ViewBag.V0 = "Kargo Firma İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Kargo Firma";
         }
     }
 }

@@ -9,4 +9,6 @@ namespace Multishop.Order.Application.Features.Mediator.Queries.OrderingQueries
     {
 
     }
+
+
 }

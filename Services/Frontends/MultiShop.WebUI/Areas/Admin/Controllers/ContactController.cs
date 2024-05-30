@@ -25,14 +25,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Index()
-        {
-            ViewBag.V0 = "İletişim İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "İletişim";
-            ViewBag.V3 = "İletişim Listesi";
-
+        {           
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7050/api/Contacts");
+            var response = await client.GetAsync("http://localhost:7050/api/Contacts");
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
@@ -46,10 +41,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateContact")]
         public IActionResult CreateContact()
         {
-            ViewBag.V0 = "İletişim İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "İletişim";
-            ViewBag.V3 = "İletişim Ekle";
             return View();
         }
 
@@ -61,7 +52,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createContactDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7050/api/Contacts", stringContent);
+            var responseMessage = await client.PostAsync("http://localhost:7050/api/Contacts", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 _toastNotification.AddSuccessToastMessage(NotifyMessage.ResultTitle.Add(createContactDto.Subject), new ToastrOptions { Title = "Başarılı" });
@@ -75,7 +66,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteContact(string id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7050/api/Contacts?id=" + id);
+            var responseMessage = await client.DeleteAsync($"http://localhost:7050/api/Contacts?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 _toastNotification.AddErrorToastMessage(NotifyMessage.ResultTitle.Delete(id.ToString()), new ToastrOptions { Title = "Başarıyla Silindi" });
@@ -88,12 +79,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateContact/{id}")]
         public async Task<IActionResult> UpdateContact(string id)
         {
-            ViewBag.V0 = "İletişim İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "İletişim";
-            ViewBag.V3 = "İletişim Güncelle";
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7050/api/Contacts/" + id);
+            var responseMessage = await client.GetAsync("http://localhost:7050/api/Contacts/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -110,7 +97,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateContactDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7050/api/Contacts", stringContent);
+            var responseMessage = await client.PutAsync("http://localhost:7050/api/Contacts", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 _toastNotification.AddWarningToastMessage(NotifyMessage.ResultTitle.Update(updateContactDto.Subject), new ToastrOptions { Title = "Başarıyla Güncellendi" });

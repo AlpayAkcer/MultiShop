@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Multishop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using Multishop.Order.Application.Features.Mediator.Queries.OrderingQueries;
+using Multishop.Order.Application.Features.Mediator.Results.OrderingResults;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
 
 namespace Multishop.Order.WebApi.Controllers
@@ -65,6 +66,13 @@ namespace Multishop.Order.WebApi.Controllers
         {
             await _mediator.Send(command);
             return Ok("Sipariş Başarıyla Güncellendi");
+        }
+
+        [HttpGet("GetOrderTotalCount")]
+        public async Task<IActionResult> GetOrderTotalCount()
+        {
+            var value = await _mediator.Send(new GetOrderingQuery());
+            return Ok(value);
         }
     }
 }

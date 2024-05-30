@@ -66,5 +66,12 @@ namespace Multishop.Discount.Controllers
             await _discountService.UpdateDiscountCouponAsync(updateCouponDto);
             return Ok("İndirim Kuponu Başarıyla Güncellendi");
         }
+
+        [HttpGet("GetDiscountConfirmedCount")]
+        public async Task<IActionResult> GetDiscountConfirmedCount()
+        {
+            var values = await _discountService.GetDiscountCouponCount();
+            return Ok(values);
+        }
     }
 }

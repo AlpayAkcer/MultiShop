@@ -1,0 +1,243 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<script src="/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7157/SignalRHub").build();
+        $("#connstatus").text(connection.state);
+
+        connection.start().then(() => {
+            $("#connstatus").text(connection.state);
+            connection.invoke("SendStatisticCount");
+        }).catch((err) => { console.log(err) });
+
+        connection.on("ReceiveCommentCount", (value) => {
+            $("#commentCount").text(value);
+        });
+    });
+</script>
+
+<section class="content container-fluid">
+    <!-- #region İstatistik Bilgilerinin Hepsi -->
+
+    <div class="row">
+        <div class="col-lg-4 col-xs-12">
+            @{ var length = ViewBag.ProductMaxPriceName.Length;}
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-arrow-up"></i> </div>
+                <div class="media-info">
+                    <h5>En Yüksek Fiyatlı Ürün</h5>
+
+                    @if (length > 30)
+                    {
+                        <h4>@(ViewBag.ProductMaxPriceName.ToString().Substring(0, 25) + "...")</h4>
+                    }
+                    else
+                    {
+                        <h3>@ViewBag.ProductMaxPriceName</h3>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+            @{ var lengthMin = ViewBag.ProductMinPriceName.Length;}
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-arrow-down"></i> </div>
+                <div class="media-info">
+                    <h5>En Düşük Fiyatlı Ürün</h5>
+                    @if (lengthMin > 15)
+                    {
+                        <h4>@(ViewBag.ProductMinPriceName.ToString().Substring(0, 15))</h4>
+                    }
+                    else
+                    {
+                        <h3>@ViewBag.ProductMinPriceName</h3>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+            <div class="media-box bg-yesil">
+                <div class="media-icon pull-left"><i class="fa fa-wechat"></i> </div>
+                <div class="media-info">
+                    <h5> SIGNALR Bağlantı Durumu</h5>
+                    <h3 id="connstatus"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+                <div class="media-info">
+                    <h5>Ortalama Ürün Fiyatı</h5>
+                    <h3>@ViewBag.ProductPriceAvg 1.250 ₺</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="icon-layers"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Ürün</h5>
+                    <h3>@ViewBag.ProductCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-list-ul"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Kategori</h5>
+                    <h3>@ViewBag.CategoryCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-copyright"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Marka</h5>
+                    <h3>@ViewBag.BrandCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-ticket"></i> </div>
+                <div class="media-info">
+                    <h5>Kupon Adedi</h5>
+                    <h3>@ViewBag.DiscountCouponCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-envelope"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Gelen Mesaj</h5>
+                    <h3>@ViewBag.MessageTotalCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-envelope-o"></i> </div>
+                <div class="media-info">
+                    <h5>Okunan Mesaj Sayısı</h5>
+                    <h3>@ViewBag.MessageReadCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-envelope-square"></i> </div>
+                <div class="media-info">
+                    <h5>Okunmamış Mesaj Sayısı</h5>
+                    <h3>@ViewBag.MessageUnReadCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-users"></i> </div>
+                <div class="media-info">
+                    <h5>Kullanıcı Toplamı</h5>
+                    <h3>@ViewBag.UserTotal</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-truck"></i> </div>
+                <div class="media-info">
+                    <h5>Kargo Müşterisi</h5>
+                    <h3>@ViewBag.CargoCustomerCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="icon-compass"></i> </div>
+                <div class="media-info">
+                    <h5>Kargo Firması</h5>
+                    <h3>@ViewBag.CompanyCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-comments"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Gelen Yorum</h5>
+                    <h3>@ViewBag.CommentTotalCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-comment-o"></i> </div>
+                <div class="media-info">
+                    <h5>Onaylı Yorum</h5>
+                    <h3>@ViewBag.CommentsConfirmedCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-comment"></i> </div>
+                <div class="media-info">
+                    <h5>Onay Bekleyen Yorum</h5>
+                    <h3>@ViewBag.CommentsUnConfirmedCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-comment"></i> </div>
+                <div class="media-info">
+                    <h5>Toplam Sipariş</h5>
+                    <h3>@ViewBag.OrderTotalCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="fa fa-comment"></i> </div>
+                <div class="media-info">
+                    <h5>Hazırlanan Sipariş</h5>
+                    <h3>@ViewBag.OrderTotalCount</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+            <div class="media-box bg-renk4">
+                <div class="media-icon pull-left"><i class="icon-basket"></i> </div>
+                <div class="media-info">
+                    <h5>Bekleyen Sipariş</h5>
+                    <h3>@ViewBag.OrderTotalCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- #endregion -->
+    <!-- #region SignalR Test Methodları -->
+    <div class="col-lg-4 col-xs-12">
+        <div class="media-box bg-renk4">
+            <div class="media-icon pull-left"><i class="fa fa-wechat"></i> </div>
+            <div class="media-info">
+                <h5> Yorum Sayısı Durumu</h5>
+                <h3 id="commentCount"></h3>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+</section>

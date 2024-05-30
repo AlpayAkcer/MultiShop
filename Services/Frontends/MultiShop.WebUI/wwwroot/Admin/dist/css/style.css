@@ -177,7 +177,7 @@ a {
 }
 
     .main-header.dark-bg {
-        background: #4a90e2;
+        background: #1B4F72;
     }
 
     .main-header .navbar {
@@ -342,7 +342,7 @@ a {
 }
 
 .main-header .logo.dark-bg {
-    background: #257fe8;
+    background: #1B4F72;
 }
 
 .main-header .logo .logo-lg {
@@ -468,23 +468,79 @@ a {
 }
 
 .media-box {
-    background-color: #7460ee;
+    /* background-color: #7460ee;*/
     padding: 20px 20px 15px 20px;
     overflow: hidden;
     border-radius: 4px;
     margin-bottom: 30px;
 }
 
-    .media-box.bg-sea {
-        background-color: #23d3d6;
+    .media-box.bg-renk1 {
+        background-color: #A04000;
     }
 
-    .media-box.bg-blue {
-        background-color: #4a90e2;
+    .media-box.bg-renk2 {
+        background-color: #935116;
     }
 
-    .media-box.bg-green {
-        background-color: #4ac959;
+    .media-box.bg-renk3 {
+        background-color: #B7950B;
+    }
+
+    .media-box.bg-renk4 {
+        background-color: #1B4F72;
+    }
+
+    .media-box.bg-renk5 {
+        background-color: #1F618D;
+    }
+
+    .media-box.bg-renk6 {
+        background-color: #6C3483;
+    }
+
+    .media-box.bg-renk7 {
+        background-color: #633974;
+    }
+
+    .media-box.bg-renk8 {
+        background-color: #B03A2E;
+    }
+
+    .media-box.bg-renk9 {
+        background-color: #7B241C;
+    }
+
+    .media-box.bg-kirmizi {
+        background-color: #C90707;
+    }
+
+    .media-box.bg-yesil {
+        background-color: #08B505;
+    }
+
+    .media-box.bg-mor {
+        background-color: #A90893;
+    }
+
+    .media-box.bg-sari {
+        background-color: #C4D608;
+    }
+
+    .media-box.bg-mavi {
+        background-color: #0882D6;
+    }
+
+    .media-box.bg-turuncu {
+        background-color: #D88703;
+    }
+
+    .media-box.bg-kahverengi {
+        background-color: #5E210E;
+    }
+
+    .media-box.bg-koyumavi {
+        background-color: #0E225E;
     }
 
     .media-box .media-icon {
@@ -570,6 +626,7 @@ a {
         }
 
 .chart-box {
+    /* height: 250px;*/
     margin-bottom: 30px;
     -moz-box-direction: normal;
     -moz-box-orient: vertical;
@@ -1866,7 +1923,7 @@ iframe {
         border-radius: 70px;
         height: 25px;
         position: absolute;
-        right: -4px;
+        right: 24px;
         top: -20px;
         width: 25px;
         z-index: 10;
@@ -1877,7 +1934,7 @@ iframe {
         border-radius: 30px;
         height: 6px;
         position: absolute;
-        right: 6px;
+        right: 34px;
         top: -10px;
         width: 6px;
     }

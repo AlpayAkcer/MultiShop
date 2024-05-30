@@ -44,9 +44,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requierments", "Requierment
 		C:\Users\Maverick\Downloads\MultiShop-master\OrderHtml.txt = C:\Users\Maverick\Downloads\MultiShop-master\OrderHtml.txt
 		C:\Users\Maverick\Downloads\MultiShop-master\PortainerCmd.txt = C:\Users\Maverick\Downloads\MultiShop-master\PortainerCmd.txt
 		PortNumber.txt = PortNumber.txt
+		C:\Users\Maverick\Desktop\Service Postman.txt = C:\Users\Maverick\Desktop\Service Postman.txt
 		C:\Users\Maverick\Downloads\MultiShop-master\SimpleCode.txt = C:\Users\Maverick\Downloads\MultiShop-master\SimpleCode.txt
 		C:\Users\Maverick\Downloads\MultiShop-master\TokenExampleCodeUIProgramCs.txt = C:\Users\Maverick\Downloads\MultiShop-master\TokenExampleCodeUIProgramCs.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\UserExample.txt = C:\Users\Maverick\Downloads\MultiShop-master\UserExample.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{EDA13E86-C7D1-42EB-80E8-9F2DF0FCA259}"
@@ -89,7 +89,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Images", "Service
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{6D1DCBD6-051D-43B0-8511-E434B6F0B13C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message", "Services\Message\MultiShop.Message\MultiShop.Message.csproj", "{20EFCFA1-4D8D-488E-BED3-430EA4938843}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Message", "Services\Message\MultiShop.Message\MultiShop.Message.csproj", "{20EFCFA1-4D8D-488E-BED3-430EA4938843}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalRRealTime", "SignalRRealTime", "{E8DB1D37-A2B8-4D0E-97A2-282AF6247BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.SignalRRealTimeApi", "Services\SignalRRealTime\MultiShop.SignalRRealTimeApi\MultiShop.SignalRRealTimeApi.csproj", "{7F733585-BF2F-4EFE-BE44-AA246B7F8928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +181,10 @@ Global
 		{20EFCFA1-4D8D-488E-BED3-430EA4938843}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20EFCFA1-4D8D-488E-BED3-430EA4938843}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20EFCFA1-4D8D-488E-BED3-430EA4938843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F733585-BF2F-4EFE-BE44-AA246B7F8928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F733585-BF2F-4EFE-BE44-AA246B7F8928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F733585-BF2F-4EFE-BE44-AA246B7F8928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F733585-BF2F-4EFE-BE44-AA246B7F8928}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -214,6 +222,8 @@ Global
 		{0D05D93F-9C5D-4513-A709-9AB764770D6A} = {3D839A1D-CC72-4BA6-8ACE-08CB4917CDB4}
 		{6D1DCBD6-051D-43B0-8511-E434B6F0B13C} = {EB5FD907-CEA7-479C-BD53-53DF427459D5}
 		{20EFCFA1-4D8D-488E-BED3-430EA4938843} = {6D1DCBD6-051D-43B0-8511-E434B6F0B13C}
+		{E8DB1D37-A2B8-4D0E-97A2-282AF6247BFD} = {EB5FD907-CEA7-479C-BD53-53DF427459D5}
+		{7F733585-BF2F-4EFE-BE44-AA246B7F8928} = {E8DB1D37-A2B8-4D0E-97A2-282AF6247BFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78622036-2F61-451C-A88D-6EC09838D110}

@@ -33,7 +33,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            ProductPictureViewBagList();
             var values = await _productPictureService.GetAllProductImageAsync();
             return View(values);
         }
@@ -42,7 +41,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateProductPicture")]
         public IActionResult CreateProductPicture()
         {
-            ProductPictureViewBagList();
             PictureProductList();
             return View();
         }
@@ -68,7 +66,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                     StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
                     createProductPictureDto.PictureUrl = uniqueFileName;
 
-                    var responseMessage = await client.PostAsync("https://localhost:7050/api/ProductPictures", stringContent);
+                    var responseMessage = await client.PostAsync("http://localhost:7050/api/ProductPictures", stringContent);
                     if (responseMessage.IsSuccessStatusCode)
                     {
 
@@ -92,7 +90,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateProductPicture/{id}")]
         public async Task<IActionResult> UpdateProductPicture(string id)
         {
-            ProductPictureViewBagList();
             PictureProductList();
             var value = await _productPictureService.GetByProductIdProductImageAsync(id);
             return View(value);
@@ -119,13 +116,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                                                  }).ToList();
             ViewBag.ProductList = productValue;
             #endregion
-        }
-
-        void ProductPictureViewBagList()
-        {
-            ViewBag.V0 = "Ürün Resimleri İşlemleri";
-            ViewBag.V1 = "Anasayfa";
-            ViewBag.V2 = "Ürün Resimleri";
         }
     }
 }
