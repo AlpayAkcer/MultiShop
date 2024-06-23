@@ -25,7 +25,7 @@ namespace MultiShop.WebUI.Controllers
         public async Task<IActionResult> Index(SignInDto signInDto)
         {
             await _identityService.SignIn(signInDto);
-            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+            return RedirectToAction("Index", "Profile", new { area = "User" });
         }
     }
 }

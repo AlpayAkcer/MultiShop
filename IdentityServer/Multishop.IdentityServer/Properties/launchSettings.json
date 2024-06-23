@@ -2,7 +2,7 @@
   "profiles": {
     "SelfHost": {
       "commandName": "Project",
-      "launchBrowser": true, //tarayıcı çalışmayacak ama api çalışacak. 
+      "launchBrowser": false, //tarayıcı çalışmayacak ama api çalışacak. 
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
