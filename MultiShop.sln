@@ -33,22 +33,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multishop.IdentityServer", "IdentityServer\Multishop.IdentityServer\Multishop.IdentityServer.csproj", "{2C8E765F-D18E-4801-8F5E-F77D904B5B5D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requierments", "Requierments", "{2D51C0B4-B283-4DD4-B9C4-EB06341696A6}"
-	ProjectSection(SolutionItems) = preProject
-		C:\Users\Maverick\Downloads\MultiShop-master\FontAwesomeLink.txt = C:\Users\Maverick\Downloads\MultiShop-master\FontAwesomeLink.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\IdentityServerVersionErrorSolution.txt = C:\Users\Maverick\Downloads\MultiShop-master\IdentityServerVersionErrorSolution.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\LoginIndex.txt = C:\Users\Maverick\Downloads\MultiShop-master\LoginIndex.txt
-		LoginIndexPostJwtTokenAuthantication.txt = LoginIndexPostJwtTokenAuthantication.txt
-		OcelotCodeExample.txt = OcelotCodeExample.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\OcelotLink.txt = C:\Users\Maverick\Downloads\MultiShop-master\OcelotLink.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\OrderHtml.txt = C:\Users\Maverick\Downloads\MultiShop-master\OrderHtml.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\PortainerCmd.txt = C:\Users\Maverick\Downloads\MultiShop-master\PortainerCmd.txt
-		PortNumber.txt = PortNumber.txt
-		C:\Users\Maverick\Desktop\Service Postman.txt = C:\Users\Maverick\Desktop\Service Postman.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\SimpleCode.txt = C:\Users\Maverick\Downloads\MultiShop-master\SimpleCode.txt
-		C:\Users\Maverick\Downloads\MultiShop-master\TokenExampleCodeUIProgramCs.txt = C:\Users\Maverick\Downloads\MultiShop-master\TokenExampleCodeUIProgramCs.txt
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{EDA13E86-C7D1-42EB-80E8-9F2DF0FCA259}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.EntityLayer", "Services\Cargo\MultiShop.Cargo.EntityLayer\MultiShop.Cargo.EntityLayer.csproj", "{C20B2924-FC5D-4A27-90EE-1634962391C9}"
@@ -93,7 +77,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Message", "Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalRRealTime", "SignalRRealTime", "{E8DB1D37-A2B8-4D0E-97A2-282AF6247BFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.SignalRRealTimeApi", "Services\SignalRRealTime\MultiShop.SignalRRealTimeApi\MultiShop.SignalRRealTimeApi.csproj", "{7F733585-BF2F-4EFE-BE44-AA246B7F8928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.SignalRRealTimeApi", "Services\SignalRRealTime\MultiShop.SignalRRealTimeApi\MultiShop.SignalRRealTimeApi.csproj", "{7F733585-BF2F-4EFE-BE44-AA246B7F8928}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RequireFiles", "RequireFiles", "{DB7EC8E2-603F-4901-9EDA-2B20B9F32B3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
