@@ -18,7 +18,7 @@ namespace Multishop.Discount.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Initial Catalog=MultiShopDiscountDB;uid=sa;pwd=4675190;");
+            optionsBuilder.UseSqlServer(@"Server=MAVERICK\\SQLEXPRESS;Initial Catalog=MultiShopDiscountDB;uid=sa;pwd=4675190;");
         }
 
         public DbSet<Coupon> Coupons { get; set; }
